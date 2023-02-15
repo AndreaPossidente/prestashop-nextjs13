@@ -63,6 +63,10 @@ header {
     }
   }
   .header-nav {
+    display: none;
+    @media (min-width: 576px) {
+      display: block;
+    }
     > .container {
       > ul {
         display: inline-flex;
