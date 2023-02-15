@@ -1,0 +1,128 @@
+main {
+  position: relative;
+  overflow: hidden;
+  .hero {
+    transform: translateX(-0%);
+    min-height: 460px;
+    background-color: black;
+    color: #fff;
+    background-image: url(https://imgcdn.myt.mu/iphonexs/screen-xr3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+  .section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0;
+    @media (min-width: 576px) {
+      padding: 0 20px;
+    }
+  }
+  .products {
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(5, 200px);
+
+    padding-left: 20px;
+    padding-right: 20px;
+    @media (min-width: 576px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+      overflow-x: visible;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    // XX-Large devices (larger desktops, 1400px and up)
+    @media (min-width: 1400px) {
+    }
+
+    .product {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      overflow: hidden;
+
+      text-align: center;
+      cursor: pointer;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        border-radius: 8px;
+        scale: 1.08;
+        box-shadow: 0px 4px 15px #00000030;
+      }
+
+      .product-image {
+        img {
+          object-fit: contain;
+        }
+      }
+
+      .product-manufacturer {
+        margin-top: 10px;
+        font-weight: 200;
+        font-size: 0.8rem;
+      }
+      .product-category {
+        margin-top: 3px;
+        font-weight: 200;
+        font-size: 0.8rem;
+      }
+      .product-name {
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-top: 3px;
+        font-weight: bold;
+        font-size: 0.875rem;
+      }
+      .product-prices {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: center;
+        .product-price {
+          text-decoration: line-through;
+          color: #777;
+        }
+        .product-price-reduced {
+          font-size: 1rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

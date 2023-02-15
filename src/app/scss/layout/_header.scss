@@ -1,0 +1,110 @@
+header {
+  .header-topbar {
+    background-color: #eeece8;
+    padding: 0.5rem;
+    ul {
+      display: inline-flex;
+      gap: 20px;
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+  .header-main {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    .container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      .search-container {
+        display: none;
+        @media (min-width: 768px) {
+          display: initial;
+        }
+        flex-grow: 1;
+        input#search {
+          border: 1px solid #bbb;
+          min-width: 95%;
+          height: 35px;
+          padding: 5px;
+        }
+      }
+
+      .header-right {
+        justify-self: flex-end;
+        margin-left: auto;
+        .header-icons {
+          display: flex;
+          gap: 15px;
+          .header-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &.hide-mobile {
+              display: none;
+              @media (min-width: 768px) {
+                display: flex;
+              }
+            }
+            span {
+              font-weight: 300;
+            }
+          }
+        }
+      }
+    }
+  }
+  .header-nav {
+    > .container {
+      > ul {
+        display: inline-flex;
+        > li {
+          list-style-type: none;
+          padding: 10px;
+          position: relative;
+
+          ul {
+            position: absolute;
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: top;
+            visibility: hidden;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background-color: #fff;
+            z-index: 10;
+            border: 1px solid #efefef;
+            overflow: hidden;
+            border-radius: 0 0 6px 6px;
+            transition: all 200ms ease-in-out;
+            li {
+              cursor: pointer;
+              padding: 10px 6px;
+              &:hover {
+                background-color: #efefef;
+              }
+            }
+          }
+
+          &:hover,
+          &:has(> ul:hover) {
+            ul {
+              transform: scaleY(100%);
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
