@@ -1,4 +1,9 @@
 import Image from "next/image";
+import {
+  IoBagAddOutline,
+  IoGitCompareOutline,
+  IoHeartOutline,
+} from "react-icons/io5";
 import { Product, Image as Img } from "./Prestashop/models";
 
 export default async function Home() {
@@ -43,11 +48,32 @@ export default async function Home() {
                 <div className="product-category">{product.category.name}</div>
                 <div className="product-prices">
                   <div className="product-price">
-                    {product.price_normal.toFixed(2)}
+                    € {product.price_normal.toFixed(2)}
                   </div>
                   <div className="product-price-reduced">
-                    {product.price_reduced.toFixed(2)}
+                    € {product.price_reduced.toFixed(2)}
                   </div>
+                </div>
+                <div className="product-buttons">
+                  <a>
+                    <IoBagAddOutline
+                      size="1.5rem"
+                      style={{ margin: "0.25rem auto" }}
+                    />
+                    <span>Add to Cart</span>
+                  </a>
+                  <a>
+                    <IoHeartOutline
+                      size="1.5rem"
+                      style={{ margin: "0.25rem auto" }}
+                    />
+                  </a>
+                  <a>
+                    <IoGitCompareOutline
+                      size="1.5rem"
+                      style={{ margin: "0.25rem auto" }}
+                    />
+                  </a>
                 </div>
               </div>
             ))}
@@ -80,11 +106,32 @@ export default async function Home() {
                 <div className="product-category">{product1.category.name}</div>
                 <div className="product-prices">
                   <div className="product-price">
-                    {product1.price_normal.toFixed(2)}
+                    € {product1.price_normal.toFixed(2)}
                   </div>
                   <div className="product-price-reduced">
-                    {product1.price_reduced.toFixed(2)}
+                    € {product1.price_reduced.toFixed(2)}
                   </div>
+                </div>
+                <div className="product-buttons">
+                  <a>
+                    <IoBagAddOutline
+                      size="1.5rem"
+                      style={{ margin: "0.25rem auto" }}
+                    />
+                    <span>Add to Cart</span>
+                  </a>
+                  <a>
+                    <IoHeartOutline
+                      size="1.5rem"
+                      style={{ margin: "0.25rem auto" }}
+                    />
+                  </a>
+                  <a>
+                    <IoGitCompareOutline
+                      size="1.5rem"
+                      style={{ margin: "0.25rem auto" }}
+                    />
+                  </a>
                 </div>
               </div>
             ))}

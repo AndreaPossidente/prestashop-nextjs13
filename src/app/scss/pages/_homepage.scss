@@ -123,6 +123,32 @@ main {
           font-weight: bold;
         }
       }
+      .product-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        a {
+          min-width: 32px;
+          min-height: 32px;
+          padding: 4px 6px;
+          border: 1px solid #ddd;
+          display: flex;
+          align-items: center;
+          &:hover {
+            background-color: #efefef;
+          }
+          span {
+            margin-left: 5px;
+            display: none;
+            @media (min-width: 576px) {
+              display: inline;
+            }
+          }
+        }
+      }
     }
   }
 }
