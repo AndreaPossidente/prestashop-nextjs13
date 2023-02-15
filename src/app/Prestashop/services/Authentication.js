@@ -1,4 +1,4 @@
-import Prestashop from "./Prestashop";
+import Prestashop from "../Prestashop";
 
 const bcrypt = require("bcryptjs");
 export default class Authentication extends Prestashop {

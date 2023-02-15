@@ -1,4 +1,4 @@
-import Prestashop from "@/app/services/Prestashop";
+import Prestashop from "@/app/Prestashop/Prestashop";
 
 export default class Model extends Prestashop {
   static ENDPOINT = null;
