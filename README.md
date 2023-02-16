@@ -1,4 +1,4 @@
-# Prestashop Next.js 13 integration through Webservice API
+# Prestashop Next.js 13 Headless integration through Webservice API
 
 The project is still in development, some models and functionalities are missing and will be added soon
 
