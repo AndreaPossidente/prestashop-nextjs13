@@ -43,7 +43,23 @@ import ProductOptionValue from "./ProductOptionValue";
 import ProductOption from "./ProductOption";
 import ProductSupplier from "./ProductSupplier";
 import Product from "./Product";
+
 import Search from "./Search";
+
+import ShopGroup from "./ShopGroup";
+import ShopUrl from "./ShopUrl";
+import Shop from "./Shop";
+
+import SpecificPriceRule from "./SpecificPriceRule";
+import SpecificPrice from "./SpecificPrice";
+
+import StockAvailable from "./StockAvailable";
+import StockMovementReason from "./StockMovementReason";
+import StockMovement from "./StockMovement";
+import Stock from "./Stock";
+
+import Store from "./Store";
+import Supplier from "./Supplier";
 
 import Zone from "./Zone";
 
@@ -91,5 +107,16 @@ export {
   ProductSupplier,
   Product,
   Search,
+  ShopGroup,
+  ShopUrl,
+  Shop,
+  SpecificPriceRule,
+  SpecificPrice,
+  StockAvailable,
+  StockMovementReason,
+  StockMovement,
+  Stock,
+  Store,
+  Supplier,
   Zone,
 };
