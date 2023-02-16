@@ -2,7 +2,7 @@
 
 The project is still in development, some models and functionalities are missing and will be added soon
 
-#### [View Demo](https://prestashop-nextjs13.vercel.app/)
+#### <a href="https://prestashop-nextjs13.vercel.app/" target="_blank">View Demo</a>
 
 ## Getting Started
 
