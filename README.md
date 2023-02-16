@@ -2,6 +2,8 @@
 
 The project is still in development, some models and functionalities are missing and will be added soon
 
+#### [View Demo](https://prestashop-nextjs13.vercel.app/)
+
 ## Getting Started
 
 1. Add the needed Environment Variables into **.env.local** file:
