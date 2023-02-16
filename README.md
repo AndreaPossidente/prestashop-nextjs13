@@ -2,6 +2,9 @@
 
 The project is still in development, some models and functionalities are missing and will be added soon
 
+#### If you'd like to collaborate with the project contact me at <a href="mailto:info@andreapossidente.dev">info@andreapossidente.dev</a>
+
+Here is a preview of the project at current status
 #### <a href="https://prestashop-nextjs13.vercel.app/" target="_blank">View Demo</a>
 
 ## Getting Started
