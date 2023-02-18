@@ -1,11 +1,27 @@
 import Carrier from "./Carrier";
 import Model from "./Model";
+import Shop from "./Shop";
+import ShopGroup from "./ShopGroup";
 import Zone from "./Zone";
 
 export default class Delivery extends Model {
   static ENDPOINT = "deliveries";
 
-  constructor(delivery) {
+  id: number;
+  /** Carrier ID */
+  id_carrier: number;
+  /** Range price ID */
+  id_range_price: number;
+  id_range_weight: number;
+  /** Zone ID */
+  id_zone: number;
+  /** Shop ID */
+  id_shop: number;
+  /** Shop group ID */
+  id_shop_group: number;
+  price: number;
+
+  constructor(delivery: DeliveryInterface) {
     super();
     this.id = delivery.id;
     this.id_carrier = delivery.id_carrier;
@@ -21,13 +37,13 @@ export default class Delivery extends Model {
     return await Carrier.findById(this.id_carrier);
   }
 
-  async rangePrice() {
-    return await RangePrice.findById(this.id_range_price);
-  }
+  // async rangePrice() {
+  //   return await RangePrice.findById(this.id_range_price);
+  // }
 
-  async rangeWeight() {
-    return await RangeWeight.findById(this.id_range_weight);
-  }
+  // async rangeWeight() {
+  //   return await RangeWeight.findById(this.id_range_weight);
+  // }
 
   async zone() {
     return await Zone.findById(this.id_zone);
@@ -40,14 +56,4 @@ export default class Delivery extends Model {
   async shopGroup() {
     return await ShopGroup.findById(this.id_shop_group);
   }
-
-  //   id_carrier	isUnsignedId	✔️	Carrier ID
-  //   id_range_price	isUnsignedId	✔️	Range price ID
-  //   id_range_weight	isUnsignedId	✔️
-  //   id_zone	isUnsignedId	✔️	Zone ID
-  //   id_shop		❌	Shop ID
-  //   id_shop_group		❌	Shop group ID
-  //   price	isPrice	✔️
-
-  // add non static CRUD
 }

@@ -48,10 +48,10 @@ export default async function Home() {
                 <div className="product-category">{product.category.name}</div>
                 <div className="product-prices">
                   <div className="product-price">
-                    € {product.price_normal.toFixed(2)}
+                    € {product.prices.price_normal.toFixed(2)}
                   </div>
                   <div className="product-price-reduced">
-                    € {product.price_reduced.toFixed(2)}
+                    € {product.prices.price_reduced.toFixed(2)}
                   </div>
                 </div>
                 <div className="product-buttons">
@@ -106,10 +106,10 @@ export default async function Home() {
                 <div className="product-category">{product1.category.name}</div>
                 <div className="product-prices">
                   <div className="product-price">
-                    € {product1.price_normal.toFixed(2)}
+                    € {product1.prices.price_normal.toFixed(2)}
                   </div>
                   <div className="product-price-reduced">
-                    € {product1.price_reduced.toFixed(2)}
+                    € {product1.prices.price_reduced.toFixed(2)}
                   </div>
                 </div>
                 <div className="product-buttons">

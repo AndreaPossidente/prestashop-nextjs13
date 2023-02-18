@@ -3,14 +3,27 @@ import Model from "./Model";
 export default class Manufacturer extends Model {
   static ENDPOINT = "manufacturers";
 
-  constructor(manufacturer) {
+  id: number;
+  active: boolean;
+  link_rewrite: string;
+  name: string;
+  date_add: Date;
+  date_upd: Date;
+  description: string;
+  short_description: string;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  associations: {};
+
+  constructor(manufacturer: ManufacturerInterface) {
     super();
-    this.id = manufacturer.id;
-    this.active = manufacturer.active;
+    this.id = Number(manufacturer.id);
+    this.active = manufacturer.active == 1 ? true : false;
     this.link_rewrite = manufacturer.link_rewrite;
     this.name = manufacturer.name;
-    this.date_add = manufacturer.date_add;
-    this.date_upd = manufacturer.date_upd;
+    this.date_add = new Date(manufacturer.date_add);
+    this.date_upd = new Date(manufacturer.date_upd);
     this.description = manufacturer.description;
     this.short_description = manufacturer.short_description;
     this.meta_title = manufacturer.meta_title;

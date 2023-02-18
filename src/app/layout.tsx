@@ -1,8 +1,12 @@
-import "@/app/scss/main.scss";
+import "../app/scss/main.scss";
 
-import Header from "@/components/Header";
+import Header from "../components/Header";
 
-export default function RootLayout({ children }) {
+interface Props {
+  children?: React.ReactNode;
+}
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       {/*
@@ -12,6 +16,7 @@ export default function RootLayout({ children }) {
       <head />
 
       <body>
+        {/* @ts-expect-error Server Component */}
         <Header />
         {children}
       </body>

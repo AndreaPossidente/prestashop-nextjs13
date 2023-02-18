@@ -1,9 +1,15 @@
-import Prestashop from "@/app/Prestashop/Prestashop";
+import Prestashop from "../Prestashop";
 
 export default class Model extends Prestashop {
-  static ENDPOINT = null;
-  static MODEL_NAME = null;
+  static ENDPOINT: string | undefined = undefined;
+  static MODEL_NAME: string | undefined = undefined;
 
+  constructor(...args: any[]) {
+    super();
+  }
+
+  // Model.deleteMany()
+  // Model.deleteOne()
   // Model.findByIdAndDelete()
   // Model.findByIdAndRemove()
   // Model.findByIdAndUpdate()
@@ -15,50 +21,11 @@ export default class Model extends Prestashop {
   // Model.updateMany()
   // Model.updateOne()
 
-  // Model.deleteMany()
-  static async deleteMany(filter = undefined) {
-    let uri = `${this.PS_URI}/api/${this.ENDPOINT}?ws_key=${this.PS_API_KEY}&io_format=JSON`;
-    let deletedCount = 0;
-    const objects = await this.findAll(filter);
-
-    for (let obj in objects) {
-      const res = await fetch(uri, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: {
-          id: obj.id,
-        },
-      });
-      deletedCount++;
-    }
-    const json = res.json();
-    return { json, deletedCount };
-  }
-
-  // Model.deleteOne()
-  static async deleteOne(filter = undefined) {
-    let uri = `${this.PS_URI}/api/${this.ENDPOINT}?ws_key=${this.PS_API_KEY}&io_format=JSON&limit=1`;
-
-    const obj = await this.findOne(filter);
-
-    const res = await fetch(uri, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: {
-        id: obj.id,
-      },
-    });
-
-    const json = res.json();
-    return { json };
-  }
-
   // Model.find()
-  static async find(filter = undefined, options = { exactMatch: false }) {
+  static async find(
+    filter: Filter = {},
+    options: Options = { exactMatch: false }
+  ) {
     let uri = `${this.PS_URI}/api/${this.ENDPOINT}?ws_key=${this.PS_API_KEY}&io_format=JSON&display=full`;
 
     if (filter) {
@@ -78,16 +45,17 @@ export default class Model extends Prestashop {
     });
 
     const json = await res.json();
-    const objects = [];
-    json[this.ENDPOINT].forEach((z) => {
-      objects.push(new this(z));
-    });
+    const objects = new Array();
+    if (this.ENDPOINT)
+      json[this.ENDPOINT].forEach((obj: any) => {
+        objects.push(new this(obj));
+      });
 
     return objects;
   }
 
   // Model.findById()
-  static async findById(id = undefined) {
+  static async findById(id: number): Promise<any> {
     let uri = `${this.PS_URI}/api/${this.ENDPOINT}/${id}?ws_key=${this.PS_API_KEY}&io_format=JSON&display=full&limit=1`;
 
     const res = await fetch(uri, {
@@ -97,11 +65,14 @@ export default class Model extends Prestashop {
     });
 
     const json = await res.json();
-    return new this(this.MODEL_NAME || json[this.ENDPOINT][0]);
+    return new this(this.MODEL_NAME || json[this.ENDPOINT!][0]);
   }
 
   // Model.findOne()
-  static async findOne(filter = undefined, options = { exactMatch: false }) {
+  static async findOne(
+    filter: Filter = {},
+    options: Options = { exactMatch: false }
+  ): Promise<any> {
     let uri = `${this.PS_URI}/api/${this.ENDPOINT}?ws_key=${this.PS_API_KEY}&io_format=JSON&display=full&limit=1`;
 
     if (filter) {
@@ -121,6 +92,6 @@ export default class Model extends Prestashop {
     });
 
     const json = await res.json();
-    return new this(json[this.ENDPOINT][0]);
+    return new this(json[this.ENDPOINT!][0]);
   }
 }

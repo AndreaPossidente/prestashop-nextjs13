@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Navigation from "./Navigation";
-import Topbar from "./Topbar";
+import Navigation from "../../components/Navigation";
+import Topbar from "../../components/Topbar";
 
 import {
   IoBagHandleOutline,
@@ -11,9 +11,12 @@ import {
   IoPersonOutline,
 } from "react-icons/io5";
 
-export default async function Header() {
+interface Props {}
+
+export default async function Header({}: Props) {
   return (
     <header>
+      {/* @ts-expect-error Server Component */}
       <Topbar />
       <div className="header-main">
         <div className="container">
@@ -66,6 +69,7 @@ export default async function Header() {
           </div>
         </div>
       </div>
+      {/* @ts-expect-error Server Component */}
       <Navigation />
     </header>
   );

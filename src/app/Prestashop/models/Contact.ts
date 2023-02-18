@@ -2,13 +2,18 @@ import Model from "./Model";
 
 export default class Contact extends Model {
   static ENDPOINT = "contacts";
-  static MODEL_NAME = "contact";
 
-  constructor(contact) {
+  id: number;
+  email: string;
+  customer_service: boolean;
+  name: string;
+  description: string;
+
+  constructor(contact: ContactInterface) {
     super();
     this.id = contact.id;
     this.email = contact.email;
-    this.customer_service = contact.customer_service;
+    this.customer_service = contact.customer_service == 1 ? true : false;
     this.name = contact.name;
     this.description = contact.description;
   }

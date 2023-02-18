@@ -1,12 +1,30 @@
 import Model from "./Model";
 import Contact from "./Contact";
 import Customer from "./Customer";
+import Language from "./Language";
+import Shop from "./Shop";
+import Order from "./Order";
+import Product from "./Product";
 
 export default class CustomerThread extends Model {
   static ENDPOINT = "customer_threads";
   static MODEL_NAME = "customer_thread";
 
-  constructor(customerThread) {
+  id: number;
+  id_lang: number;
+  id_shop: number;
+  id_customer: number;
+  id_order: number;
+  id_product: number;
+  id_contact: number;
+  email: string;
+  token: string;
+  status: number;
+  date_add: string;
+  date_upd: string;
+  associations: AssociationInterface;
+
+  constructor(customerThread: CustomerThreadInterface) {
     super();
     this.id = customerThread.id;
     this.id_lang = customerThread.id_lang;
@@ -24,7 +42,7 @@ export default class CustomerThread extends Model {
   }
 
   async lang() {
-    return await Lang.findById(this.id_lang);
+    return await Language.findById(this.id_lang);
   }
 
   async shop() {

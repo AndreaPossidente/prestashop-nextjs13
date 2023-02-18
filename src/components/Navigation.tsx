@@ -1,10 +1,10 @@
-import { Category } from "@/app/Prestashop/models";
+import { Category } from "../app/Prestashop/models";
 import Link from "next/link";
 
-export default async function Navigation() {
+export default async function Navigation(): Promise<JSX.Element> {
   const categories = await Category.find();
 
-  function getAllCategories(startParent, cats) {
+  function getAllCategories(startParent: any, cats: any[]) {
     return cats.map((cat) => {
       if (cat.id_parent == String(startParent)) {
         let subcats = cat?.associations?.categories;

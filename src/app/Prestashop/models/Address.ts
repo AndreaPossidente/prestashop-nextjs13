@@ -1,13 +1,47 @@
 import Country from "./Country";
 import Customer from "./Customer";
+import Manufacturer from "./Manufacturer";
 import Model from "./Model";
+import State from "./State";
+import Supplier from "./Supplier";
 
 export default class Address extends Model {
   static ENDPOINT = "addresses";
   static MODEL_NAME = "address";
 
-  constructor(address) {
+  id: number;
+  /** Customer ID */
+  id_customer: number;
+  /** Manufacturer ID */
+  id_manufacturer: number;
+  /** Supplier ID */
+  id_supplier: number;
+  /** Warehouse ID */
+  id_warehouse: number;
+  /** Country ID */
+  id_country: number;
+  /** State ID */
+  id_state: number;
+  alias: string;
+  company: string;
+  lastname: string;
+  firstname: string;
+  vat_number: string;
+  address1: string;
+  address2: string;
+  postcode: string;
+  city: string;
+  other: string;
+  phone: string;
+  phone_mobile: string;
+  dni: string;
+  deleted: Boolean;
+  date_add: Date;
+  date_upd: Date;
+
+  constructor(address: AddressInterface) {
     super();
+
     this.id = address.id;
     this.id_customer = address.id_customer;
     this.id_manufacturer = address.id_manufacturer;
@@ -28,9 +62,9 @@ export default class Address extends Model {
     this.phone = address.phone;
     this.phone_mobile = address.phone_mobile;
     this.dni = address.dni;
-    this.deleted = address.deleted;
-    this.date_add = address.date_add;
-    this.date_upd = address.date_upd;
+    this.deleted = address.deleted == 1 ? true : false;
+    this.date_add = new Date(address.date_add);
+    this.date_upd = new Date(address.date_upd);
   }
 
   async customer() {
@@ -45,9 +79,9 @@ export default class Address extends Model {
     return await Supplier.findById(this.id_supplier);
   }
 
-  async warehouse() {
-    return await Warehouse.findById(this.id_warehouse);
-  }
+  // async warehouse() {
+  //   return await Warehouse.findById(this.id_warehouse);
+  // }
 
   async country() {
     return await Country.findById(this.id_country);
@@ -56,6 +90,4 @@ export default class Address extends Model {
   async state() {
     return await State.findById(this.id_state);
   }
-
-  // add non static CRUD
 }

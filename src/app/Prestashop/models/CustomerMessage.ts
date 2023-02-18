@@ -1,12 +1,24 @@
 import Address from "./Address";
 import CustomerThread from "./CustomerThread";
+import Employee from "./Employee";
 import Model from "./Model";
 
 export default class CustomerMessage extends Model {
   static ENDPOINT = "customer_messages";
-  static MODEL_NAME = "customer_message";
 
-  constructor(customerMessage) {
+  id: number;
+  id_employee: number;
+  id_customer_thread: number;
+  id_address: number;
+  message: string;
+  file_name: string;
+  user_agent: string;
+  private: boolean;
+  date_add: Date;
+  date_upd: Date;
+  read: boolean;
+
+  constructor(customerMessage: CustomerMessageInterface) {
     super();
     this.id = customerMessage.id;
     this.id_employee = customerMessage.id_employee;
@@ -15,10 +27,10 @@ export default class CustomerMessage extends Model {
     this.message = customerMessage.message;
     this.file_name = customerMessage.file_name;
     this.user_agent = customerMessage.user_agent;
-    this.private = customerMessage.private;
-    this.date_add = customerMessage.date_add;
-    this.date_upd = customerMessage.date_upd;
-    this.read = customerMessage.read;
+    this.private = customerMessage.private == 1 ? true : false;
+    this.date_add = new Date(customerMessage.date_add);
+    this.date_upd = new Date(customerMessage.date_upd);
+    this.read = customerMessage.read == 1 ? true : false;
   }
 
   async employee() {
@@ -30,17 +42,4 @@ export default class CustomerMessage extends Model {
   async address() {
     return await Address.findById(this.id_address);
   }
-
-  // id_employee	isUnsignedId	❌		Employee ID
-  // id_customer_thread		❌		Customer Thread ID
-  // ip_address	isIp2Long	❌	15
-  // message	isCleanHtml	✔️	16777216
-  // file_name		❌
-  // user_agent		❌
-  // private	isBool	❌
-  // date_add	isDate	❌
-  // date_upd	isDate	❌
-  // read	isBool	❌
-
-  // add non static CRUD
 }

@@ -1,11 +1,24 @@
 import Address from "./Address";
 import Cart from "./Cart";
+import Combination from "./Combination";
 import Model from "./Model";
+import Product from "./Product";
 
 export default class Customization extends Model {
   static ENDPOINT = "customizations";
 
-  constructor(customization) {
+  id: number;
+  id_address_delivery: number;
+  id_cart: number;
+  id_product: number;
+  id_product_attribute: number;
+  quantity: number;
+  quantity_refunded: number;
+  quantity_returned: number;
+  in_cart: boolean;
+  associations: AssociationInterface;
+
+  constructor(customization: CustomizationInterface) {
     super();
     this.id = customization.id;
     this.id_address_delivery = customization.id_address_delivery;
@@ -15,7 +28,7 @@ export default class Customization extends Model {
     this.quantity = customization.quantity;
     this.quantity_refunded = customization.quantity_refunded;
     this.quantity_returned = customization.quantity_returned;
-    this.in_cart = customization.in_cart;
+    this.in_cart = customization.in_cart == 1 ? true : false;
     this.associations = customization.associations;
   }
 
@@ -32,18 +45,6 @@ export default class Customization extends Model {
   }
 
   async productAttribute() {
-    return await ProductAttribute.findById(this.id_product_attribute);
+    return await Combination.findById(this.id_product_attribute);
   }
-
-  //   id_address_delivery	isUnsignedId	✔️	Delivery address ID
-  //   id_cart	isUnsignedId	✔️	Cart ID
-  //   id_product	isUnsignedId	✔️	Product ID
-  //   id_product_attribute	isUnsignedId	✔️	Product attribute ID
-  //   quantity	isUnsignedId	✔️
-  //   quantity_refunded	isUnsignedId	✔️
-  //   quantity_returned	isUnsignedId	✔️
-  //   in_cart	isBool	✔️
-  //   associations		❌
-
-  // add non static CRUD
 }
