@@ -14,7 +14,7 @@ export default class Manufacturer extends Model {
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
-  associations: {};
+  associations: AssociationInterface;
 
   constructor(manufacturer: ManufacturerInterface) {
     super();
@@ -31,18 +31,4 @@ export default class Manufacturer extends Model {
     this.meta_keywords = manufacturer.meta_keywords;
     this.associations = manufacturer.associations;
   }
-
-  //   active		❌	✔️
-  //   link_rewrite		❌	❌		true
-  //   name	isCatalogName	✔️	✔️	64
-  //   date_add		❌	✔️
-  //   date_upd		❌	✔️
-  //   description	isCleanHtml	❌	✔️
-  //   short_description	isCleanHtml	❌	✔️
-  //   meta_title	isGenericName	❌	✔️	255
-  //   meta_description	isGenericName	❌	✔️	512
-  //   meta_keywords	isGenericName	❌	✔️
-  //   associations		❌	✔️
-
-  // add non static CRUD
 }

@@ -17,6 +17,7 @@ interface CartRow {
 interface AssociationInterface {
   products?: { id: number }[];
   categories?: { id: number }[];
+  addresses?: { id: number }[];
   groups?: { id: number }[];
   product_option_values?: { id: number }[];
   images?: { id: number }[];
@@ -24,3 +25,13 @@ interface AssociationInterface {
   customized_data_images?: { id: number }[];
   cart_rows?: CartRow[];
 }
+
+type ImageSchemaType = {
+  "": {
+    id: number;
+  }[];
+  errors: {
+    code: number;
+    message: string;
+  }[];
+};

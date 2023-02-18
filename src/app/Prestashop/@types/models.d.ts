@@ -316,6 +316,98 @@ interface DeliveryInterface {
   price: number;
 }
 
+interface EmployeeInterface {
+  id: number;
+  id_lang: number;
+  last_passwd_gen: string;
+  stats_date_from: string;
+  stats_date_to: string;
+  stats_compare_from: string;
+  stats_compare_to: string;
+  passwd: string;
+  lastname: string;
+  firstname: string;
+  email: string;
+  active: number;
+  id_profile: number;
+  bo_color: string | null;
+  default_tab: number;
+  bo_theme: string;
+  bo_css: string;
+  bo_width: number;
+  bo_menu: number;
+  stats_compare_option: number;
+  preselect_date_range: number | null;
+  id_last_order: number;
+  id_last_customer_message: number;
+  id_last_customer: number;
+  reset_passnumberword_token: string | null;
+  reset_password_validity: string;
+  has_enabled_gravatar: number;
+}
+
+interface GroupInterface {
+  id: number;
+  reduction: string;
+  price_display_method: number;
+  show_prices: number;
+  date_add: string;
+  date_upd: string;
+  name: string;
+}
+
+interface GuestInterface {
+  id: number;
+  id_customer: number;
+  id_operating_system: number;
+  id_web_browser: number;
+  javascript: number;
+  screen_resolution_x: number;
+  screen_resolution_y: number;
+  screen_color: number;
+  sun_java: number;
+  adobe_flash: number;
+  adobe_director: number;
+  apple_quicktime: number;
+  real_player: number;
+  windows_media: number;
+  accept_language: string;
+  mobile_theme: number;
+}
+
+interface ImageInterface {
+  general?: ImageSchemaType;
+  products?: ImageSchemaType;
+  categories?: ImageSchemaType;
+  manufacturers?: ImageSchemaType;
+  suppliers?: ImageSchemaType;
+  stores?: ImageSchemaType;
+  customizations?: ImageSchemaType;
+}
+
+interface ImageTypeInterface {
+  id: number;
+  name: string;
+  width: number;
+  height: number;
+  categories: number;
+  products: number;
+  manufacturers: number;
+  suppliers: number;
+  stores: number;
+}
+
+interface LanguageInterface {
+  id: number;
+  name: string;
+  iso_code: string;
+  locale: string;
+  active: number;
+  is_rtl: number;
+  date_format_lite: string;
+  date_format_full: string;
+}
+
 interface ManufacturerInterface {
   id: number;
   active: number;
@@ -328,7 +420,7 @@ interface ManufacturerInterface {
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
-  associations: {};
+  associations: AssociationInterface;
 }
 
 interface ProductInterface {
