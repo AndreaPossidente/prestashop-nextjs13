@@ -423,6 +423,17 @@ interface ManufacturerInterface {
   associations: AssociationInterface;
 }
 
+interface MessageInterface {
+  id: number;
+  id_cart: number;
+  id_order: number;
+  id_customer: number;
+  id_employee: number;
+  message: string;
+  private: number;
+  date_add: string;
+}
+
 interface ProductInterface {
   id: number;
   id_manufacturer: number;

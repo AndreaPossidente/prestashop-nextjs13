@@ -26,17 +26,23 @@ export default class Model extends Prestashop {
     filter: Filter = {},
     options: Options = { exactMatch: false }
   ) {
-    let uri = `${this.PS_URI}/api/${this.ENDPOINT}?ws_key=${this.PS_API_KEY}&io_format=JSON&display=full`;
+    let params: URLSearchParams = new URLSearchParams({
+      ws_key: String(this.PS_API_KEY),
+      io_format: "JSON",
+      display: "full",
+    });
 
     if (filter) {
       for (let key in filter) {
-        uri += "&filter[";
-        uri += key;
-        uri += options.exactMatch ? "]=[" : "]=%[";
-        uri += filter[key];
-        uri += options.exactMatch ? "]" : "]%";
+        if (options.exactMatch) {
+          params.set(`filter[${key}]`, `[${filter[key]}]`);
+        } else {
+          params.set(`filter[${key}]`, `%[${filter[key]}]%`);
+        }
       }
     }
+
+    let uri = `${this.PS_URI}/api/${this.ENDPOINT}?${params}`;
 
     const res = await fetch(uri, {
       headers: {
@@ -56,7 +62,13 @@ export default class Model extends Prestashop {
 
   // Model.findById()
   static async findById(id: number): Promise<any> {
-    let uri = `${this.PS_URI}/api/${this.ENDPOINT}/${id}?ws_key=${this.PS_API_KEY}&io_format=JSON&display=full&limit=1`;
+    let params: URLSearchParams = new URLSearchParams({
+      ws_key: String(this.PS_API_KEY),
+      io_format: "JSON",
+      display: "full",
+      limit: "1",
+    });
+    let uri = `${this.PS_URI}/api/${this.ENDPOINT}/${id}?${params}`;
 
     const res = await fetch(uri, {
       headers: {
@@ -73,17 +85,24 @@ export default class Model extends Prestashop {
     filter: Filter = {},
     options: Options = { exactMatch: false }
   ): Promise<any> {
-    let uri = `${this.PS_URI}/api/${this.ENDPOINT}?ws_key=${this.PS_API_KEY}&io_format=JSON&display=full&limit=1`;
+    let params: URLSearchParams = new URLSearchParams({
+      ws_key: String(this.PS_API_KEY),
+      io_format: "JSON",
+      display: "full",
+      limit: "1",
+    });
 
     if (filter) {
       for (let key in filter) {
-        uri += "&filter[";
-        uri += key;
-        uri += options.exactMatch ? "]=[" : "]=%[";
-        uri += filter[key];
-        uri += options.exactMatch ? "]" : "]%";
+        if (options.exactMatch) {
+          params.set(`filter[${key}]`, `[${filter[key]}]`);
+        } else {
+          params.set(`filter[${key}]`, `%[${filter[key]}]%`);
+        }
       }
     }
+
+    let uri = `${this.PS_URI}/api/${this.ENDPOINT}?${params}`;
 
     const res = await fetch(uri, {
       headers: {

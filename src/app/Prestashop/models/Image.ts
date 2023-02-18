@@ -6,5 +6,10 @@ export default class Image extends Model {
     super();
   }
 
+  static products(productId: number, linkRewrite: string, type: string) {
+    let uri = `${this.PS_URI}/${productId}-${type}/${linkRewrite}.jpg`;
+    return uri;
+  }
+
   // do it later
 }
