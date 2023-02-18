@@ -341,7 +341,7 @@ interface EmployeeInterface {
   id_last_order: number;
   id_last_customer_message: number;
   id_last_customer: number;
-  reset_passnumberword_token: string | null;
+  reset_password_token: string | null;
   reset_password_validity: string;
   has_enabled_gravatar: number;
 }
