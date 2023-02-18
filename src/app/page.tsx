@@ -7,12 +7,12 @@ import {
 import { Product, Image as Img } from "./Prestashop/models";
 
 export default async function Home() {
-  const products = await Product.find({}, { limit: 5 });
+  const products: Product[] = await Product.find({}, { limit: 5 });
   for (let p of products) {
     await p.defaultCategory();
   }
 
-  const products1 = await Product.find({}, { limit: 5, offset: 5 });
+  const products1: Product[] = await Product.find({}, { limit: 5, offset: 5 });
   for (let p of products1) {
     await p.defaultCategory();
   }
@@ -45,7 +45,7 @@ export default async function Home() {
                   {product.manufacturer_name}
                 </div>
                 <div className="product-name">{product.name}</div>
-                <div className="product-category">{product.category.name}</div>
+                <div className="product-category">{product.category?.name}</div>
                 <div className="product-prices">
                   <div className="product-price">
                     € {product.prices.price_normal.toFixed(2)}
@@ -103,7 +103,9 @@ export default async function Home() {
                   {product1.manufacturer_name}
                 </div>
                 <div className="product-name">{product1.name}</div>
-                <div className="product-category">{product1.category.name}</div>
+                <div className="product-category">
+                  {product1.category?.name}
+                </div>
                 <div className="product-prices">
                   <div className="product-price">
                     € {product1.prices.price_normal.toFixed(2)}

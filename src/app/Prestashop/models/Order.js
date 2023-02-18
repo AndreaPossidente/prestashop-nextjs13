@@ -5,6 +5,8 @@ import Cart from "./Cart";
 import Currency from "./Currency";
 import Customer from "./Customer";
 import Language from "./Language";
+import ShopGroup from "./ShopGroup";
+import Shop from "./Shop";
 
 export default class Order extends Model {
   static ENDPOINT = "orders";
