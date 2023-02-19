@@ -10,6 +10,12 @@ a {
   transition: color 200ms ease-in-out;
 }
 
+.breadcrumb {
+  a {
+    text-decoration: underline;
+  }
+}
+
 a:hover {
   color: #0075fc;
 }

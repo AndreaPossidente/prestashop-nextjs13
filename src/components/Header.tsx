@@ -46,7 +46,7 @@ export default async function Header({}: Props) {
                 />
                 <span>Assistenza</span>
               </Link>
-              <Link href={"/"} className="header-icon">
+              <Link href={"/login"} className="header-icon">
                 <IoPersonOutline
                   size="1.5rem"
                   style={{ margin: "0.25rem auto" }}
