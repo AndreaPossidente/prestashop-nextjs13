@@ -6,7 +6,7 @@ main {
     min-height: 460px;
     background-color: black;
     color: #fff;
-    background-image: url(https://imgcdn.myt.mu/iphonexs/screen-xr3.jpg);
+    background-image: url(/assets/img/hero-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -18,15 +18,20 @@ main {
     margin-top: 40px;
     margin-bottom: 40px;
     padding: 0;
+    > h1 {
+      margin-left: 20px;
+    }
     @media (min-width: 576px) {
+      > h1 {
+        margin-left: 0px;
+      }
       padding: 0 20px;
     }
   }
   .products {
     width: 100%;
-    display: grid;
+    display: flex;
     gap: 20px;
-    grid-template-columns: repeat(5, 200px);
 
     padding-left: 20px;
     padding-right: 20px;
@@ -47,21 +52,25 @@ main {
     // Small devices (landscape phones, 576px and up)
     @media (min-width: 576px) {
       overflow-x: visible;
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
 
     // Medium devices (tablets, 768px and up)
     @media (min-width: 768px) {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
+      display: grid;
       grid-template-columns: repeat(4, 1fr);
     }
 
     // X-Large devices (large desktops, 1200px and up)
     @media (min-width: 1200px) {
+      display: grid;
       grid-template-columns: repeat(5, 1fr);
     }
 
@@ -70,6 +79,7 @@ main {
     }
 
     .product {
+      min-width: 200px;
       margin-top: 20px;
       margin-bottom: 20px;
 
