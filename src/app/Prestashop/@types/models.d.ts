@@ -434,6 +434,127 @@ interface MessageSchema {
   date_add: string;
 }
 
+interface OrderCarrierSchema {
+  id: number;
+  id_order: number;
+  id_carrier: number;
+  id_order_invoice: number;
+  weight: string;
+  shipping_cost_tax_excl: string;
+  shipping_cost_tax_incl: string;
+  tracking_number: string;
+  date_add: string;
+}
+
+interface OrderCartRuleSchema {
+  id: number;
+  id_order: number;
+  id_order_invoice: number;
+  name: string;
+  value: string;
+  value_tax_excl: string;
+  free_shipping: number;
+  deleted: number;
+}
+
+interface OrderDetailSchema {
+  id: number;
+  id_order: number;
+  product_id: number;
+  product_attribute_id: number;
+  product_quantity_reinjected: number;
+  group_reduction: string;
+  discount_quantity_applied: number;
+  download_hash: string;
+  download_deadline: string;
+  id_order_invoice: number;
+  id_warehouse: number;
+  id_shop: number;
+  id_customization: number;
+  product_name: string;
+  product_quantity: number;
+  product_quantity_in_stock: number;
+  product_quantity_return: number;
+  product_quantity_refunded: number;
+  product_price: string;
+  reduction_percent: string;
+  reduction_amount: string;
+  reduction_amount_tax_incl: string;
+  reduction_amount_tax_excl: string;
+  product_quantity_discount: string;
+  product_ean13: string;
+  product_isbn: string;
+  product_upc: string;
+  product_mpn: string;
+  product_reference: string;
+  product_supplier_reference: string;
+  product_weight: string;
+  tax_computation_method: number;
+  id_tax_rules_group: number;
+  ecotax: string;
+  ecotax_tax_rate: string;
+  download_nb: number;
+  unit_price_tax_incl: string;
+  unit_price_tax_excl: string;
+  total_price_tax_incl: string;
+  total_price_tax_excl: string;
+  total_shipping_price_tax_excl: string;
+  total_shipping_price_tax_incl: string;
+  purchase_supplier_price: string;
+  original_product_price: string;
+  original_wholesale_price: string;
+  total_refunded_tax_excl: string;
+  total_refunded_tax_incl: string;
+  associations: AssociationSchema;
+}
+
+interface OrderHistorySchema {
+  id: number;
+  id_employee: number;
+  id_order_state: number;
+  id_order: number;
+  date_add: string;
+}
+
+interface OrderInvoiceSchema {
+  id: number;
+  id_order: number;
+  delivery_number: number;
+  delivery_date: string;
+  total_discount_tax_excl: string;
+  total_discount_tax_incl: string;
+  total_paid_tax_excl: string;
+  total_paid_tax_incl: string;
+  total_products: string;
+  total_products_wt: string;
+  total_shipping_tax_excl: string;
+  total_shipping_tax_incl: string;
+  shipping_tax_computation_method: string;
+  total_wrapping_tax_excl: string;
+  total_wrapping_tax_incl: string;
+  shop_address: string;
+  note: string;
+  date_add: string;
+}
+
+interface OrderPaymentSchema {
+  id: number;
+  id_currency: number;
+  amount: string;
+  payment_method: string;
+  conversion_rate: string;
+  transaction_id: string;
+  card_number: string;
+  card_brand: string;
+  card_expiration: string;
+  card_holder: string;
+  date_add: string;
+}
+
+interface OrderSlipSchema {}
+
+interface OrderStateSchema {}
+
 interface OrderSchema {
   id: number;
   id_address_delivery: number;
@@ -484,6 +605,20 @@ interface OrderSchema {
   reference: string;
   associations: AssociationSchema;
 }
+
+interface PriceRangeSchema {}
+
+interface ProductCustomizationFieldSchema {}
+
+interface ProductFeatureValueSchema {}
+
+interface ProductFeatureSchema {}
+
+interface ProductOptionValueSchema {}
+
+interface ProductOptionSchema {}
+
+interface ProductSupplierSchema {}
 
 interface ProductSchema {
   id: number;
@@ -562,3 +697,57 @@ interface ProductSchema {
   price_normal: string;
   price_reduced: string;
 }
+
+interface SearchSchema {}
+
+interface ShopGroupSchema {}
+
+interface ShopUrlSchema {}
+
+interface ShopSchema {}
+
+interface SpecificPriceRuleSchema {}
+
+interface SpecificPriceSchema {}
+
+interface StateSchema {}
+
+interface StockAvailableSchema {}
+
+interface StockMovementReasonSchema {}
+
+interface StockMovementSchema {}
+
+interface StockSchema {}
+
+interface StoreSchema {}
+
+interface SupplierSchema {}
+
+interface SupplyOrderDetailSchema {}
+
+interface SupplyOrderHistorySchema {}
+
+interface SupplyOrderReceiptSchema {}
+
+interface SupplyOrderStateSchema {}
+
+interface SupplyOrderSchema {}
+
+interface TagSchema {}
+
+interface TaxRuleGroupSchema {}
+
+interface TaxRuleSchema {}
+
+interface TaxSchema {}
+
+interface TranslatedConfigurationSchema {}
+
+interface WarehouseProductLocationSchema {}
+
+interface WarehouseSchema {}
+
+interface WeightRangeSchema {}
+
+interface ZoneSchema {}

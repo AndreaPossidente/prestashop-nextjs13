@@ -1,16 +1,24 @@
 import Employee from "./Employee";
 import Model from "./Model";
+import Order from "./Order";
+import OrderState from "./OrderState";
 
 export default class OrderHistory extends Model {
   static ENDPOINT = "order_histories";
 
-  constructor(orderHistory) {
+  id: number;
+  id_employee: number;
+  id_order_state: number;
+  id_order: number;
+  date_add: Date;
+
+  constructor(orderHistory: OrderHistorySchema) {
     super();
     this.id = orderHistory.id;
     this.id_employee = orderHistory.id_employee;
     this.id_order_state = orderHistory.id_order_state;
     this.id_order = orderHistory.id_order;
-    this.date_add = orderHistory.date_add;
+    this.date_add = new Date(orderHistory.date_add);
   }
 
   async employee() {
@@ -24,11 +32,4 @@ export default class OrderHistory extends Model {
   async order() {
     return await Order.findById(this.id_order);
   }
-
-  //   id_employee	isUnsignedId	❌	Employee ID
-  //   id_order_state	isUnsignedId	✔️
-  //   id_order	isUnsignedId	✔️	Order ID
-  //   date_add	isDate	❌
-
-  // add non static CRUD
 }

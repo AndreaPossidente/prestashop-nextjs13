@@ -65,6 +65,7 @@ interface Association {
   customized_data_images?: { id: number }[];
   cart_rows?: CartRow[];
   order_rows?: OrderRow[];
+  taxes?: { id: number }[];
 }
 
 interface AssociationSchema {
@@ -78,6 +79,7 @@ interface AssociationSchema {
   customized_data_images?: { id: number }[];
   cart_rows?: CartRowSchema[];
   order_rows?: OrderRowSchema[];
+  taxes?: { id: number }[];
 }
 
 type ImageSchemaType = {
