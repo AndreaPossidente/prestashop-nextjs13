@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { CMS } from "../../../Prestashop/models";
+import { CMS } from "@/Prestashop/models";
 
 interface PageProps {
   params: {
@@ -21,7 +21,7 @@ export default async function Page({ params }: PageProps) {
     <main>
       <div className="container">
         <Suspense fallback={<div>Loading...</div>}>
-          <div dangerouslySetInnerHTML={{ __html: page.content }}></div>
+          <div dangerouslySetInnerHTML={{ __html: page.content || "" }}></div>
         </Suspense>
       </div>
     </main>

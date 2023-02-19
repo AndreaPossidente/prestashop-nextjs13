@@ -1,4 +1,4 @@
-import { Category } from "../app/Prestashop/models";
+import { Category } from "@/Prestashop/models";
 import Link from "next/link";
 
 export default async function Navigation(): Promise<JSX.Element> {

@@ -1,4 +1,4 @@
-import { Category } from "../../../Prestashop/models";
+import { Category } from "@/Prestashop/models";
 
 interface HeadProps {
   params: {

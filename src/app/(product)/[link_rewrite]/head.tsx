@@ -1,5 +1,4 @@
-import { notFound } from "next/navigation";
-import { Product } from "../../Prestashop/models";
+import { Product } from "@/Prestashop/models";
 
 interface ProductHeadProps {
   params: {

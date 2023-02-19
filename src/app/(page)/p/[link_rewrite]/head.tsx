@@ -1,4 +1,4 @@
-import { CMS } from "../../../Prestashop/models";
+import { CMS } from "@/Prestashop/models";
 
 interface HeadProps {
   params: {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Suspense } from "react";
-import { Product, Image as Img } from "../../Prestashop/models";
+import { Product, Image as Img } from "@/Prestashop/models";
 import { notFound } from "next/navigation";
 
 interface ProductPageProps {
@@ -35,10 +35,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
             />
             <h1>{product.name}</h1>
             <div
-              dangerouslySetInnerHTML={{ __html: product.description_short }}
+              dangerouslySetInnerHTML={{
+                __html: product.description_short || "",
+              }}
             ></div>
             <div
-              dangerouslySetInnerHTML={{ __html: product.description }}
+              dangerouslySetInnerHTML={{ __html: product.description || "" }}
             ></div>
           </div>
         </Suspense>

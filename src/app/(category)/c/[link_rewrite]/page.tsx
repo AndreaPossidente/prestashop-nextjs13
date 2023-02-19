@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { Category, CMS, Product } from "../../../Prestashop/models";
+import { Category, Product } from "@/Prestashop/models";
 
 interface PageProps {
   params: {
@@ -29,7 +29,7 @@ export default async function Page({ params }: PageProps) {
           <div>
             <h1>{category.name}</h1>
             <div
-              dangerouslySetInnerHTML={{ __html: category.description }}
+              dangerouslySetInnerHTML={{ __html: category.description || "" }}
             ></div>
             <h3>Products in this category:</h3>
             <ul>

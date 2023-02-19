@@ -7,7 +7,7 @@ import {
   IoGitCompareOutline,
   IoHeartOutline,
 } from "react-icons/io5";
-import { Product, Image as Img, CMS } from "./Prestashop/models";
+import { Product, Image as Img, CMS } from "@/Prestashop/models";
 
 interface HomeInterface {
   homepage?: [

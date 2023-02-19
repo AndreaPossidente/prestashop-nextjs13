@@ -1,7 +1,6 @@
-import "../app/scss/main.scss";
+import "@/app/scss/main.scss";
 
-import Header from "../components/Header";
-import { CMS } from "./Prestashop/models";
+import Header from "@/components/Header";
 
 interface Props {
   children?: React.ReactNode;

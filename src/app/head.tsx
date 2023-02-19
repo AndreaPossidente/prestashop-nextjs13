@@ -1,4 +1,4 @@
-import { CMS } from "./Prestashop/models";
+import { CMS } from "@/Prestashop/models";
 
 export default async function Head() {
   const shop: CMS = await CMS.findOne({ link_rewrite: "index" }).catch(
