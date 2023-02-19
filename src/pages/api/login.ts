@@ -7,10 +7,12 @@ export default async function handler(
 ) {
   const { query } = req;
 
-  const email: string | undefined = query?.email as string | undefined;
-  const password: string | undefined = query?.password as string | undefined;
+  const email: string | undefined =
+    (query?.email as string) !== "" ? (query.email as string) : undefined;
+  const password: string | undefined =
+    (query?.password as string) !== "" ? (query.password as string) : undefined;
 
-  if (!email && !password)
+  if (!email && !password) {
     res.status(400).json({
       success: false,
       errors: {
@@ -18,22 +20,28 @@ export default async function handler(
         password: "Password field is required",
       },
     });
+    return;
+  }
 
-  if (!email)
+  if (!email) {
     res.status(400).json({
       success: false,
       errors: {
         email: "Email field is required",
       },
     });
+    return;
+  }
 
-  if (!password)
+  if (!password) {
     res.status(400).json({
       success: false,
       errors: {
         password: "Password field is required",
       },
     });
+    return;
+  }
 
   if (email && password) {
     const auth: AuthResponse = await Authentication.login(email, password);
@@ -43,5 +51,6 @@ export default async function handler(
     } else {
       res.status(400).json(auth);
     }
+    return;
   }
 }
