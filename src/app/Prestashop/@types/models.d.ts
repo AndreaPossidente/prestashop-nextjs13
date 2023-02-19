@@ -551,10 +551,43 @@ interface OrderPaymentSchema {
   date_add: string;
 }
 
-interface OrderSlipSchema {}
+interface OrderSlipSchema {
+  id: number;
+  id_customer: number;
+  id_order: number;
+  conversion_rate: string;
+  total_products_tax_excl: string;
+  total_products_tax_incl: string;
+  total_shipping_tax_excl: string;
+  total_shipping_tax_incl: string;
+  amount: string;
+  shipping_cost: string;
+  shipping_cost_amount: string;
+  partial: number;
+  date_add: string;
+  date_upd: string;
+  order_slip_type: number;
+  associations: AssociationSchema;
+}
 
-interface OrderStateSchema {}
-
+interface OrderStateSchema {
+  id: number;
+  unremovable: number;
+  delivery: number;
+  hidden: number;
+  send_email: number;
+  module_name: string;
+  invoice: number;
+  color: string;
+  logable: number;
+  shipped: number;
+  paid: number;
+  pdf_delivery: number;
+  pdf_invoice: number;
+  deleted: number;
+  name: string;
+  template: string;
+}
 interface OrderSchema {
   id: number;
   id_address_delivery: number;
@@ -606,13 +639,35 @@ interface OrderSchema {
   associations: AssociationSchema;
 }
 
-interface PriceRangeSchema {}
+interface PriceRangeSchema {
+  id: number;
+  id_carrier: number;
+  delimeter1: string;
+  delimeter2: string;
+}
 
-interface ProductCustomizationFieldSchema {}
+interface ProductCustomizationFieldSchema {
+  id: number;
+  id_product: number;
+  type: number;
+  required: number;
+  is_module: number;
+  is_deleted: number;
+  name: string;
+}
 
-interface ProductFeatureValueSchema {}
+interface ProductFeatureValueSchema {
+  id: number;
+  id_feature: number;
+  custom: number;
+  value: string;
+}
 
-interface ProductFeatureSchema {}
+interface ProductFeatureSchema {
+  id: number;
+  position: number;
+  name: string;
+}
 
 interface ProductOptionValueSchema {}
 

@@ -54,6 +54,22 @@ interface OrderRow {
   unit_price_tax_excl: number;
 }
 
+interface OrderSlipDetailSchema {
+  id: number;
+  id_order_detail: number;
+  product_quantity: number;
+  amount_tax_excl: string;
+  amount_tax_incl: string;
+}
+
+interface OrderSlipDetail {
+  id: number;
+  id_order_detail: number;
+  product_quantity: number;
+  amount_tax_excl: number;
+  amount_tax_incl: number;
+}
+
 interface Association {
   products?: { id: number }[];
   categories?: { id: number }[];
@@ -65,6 +81,7 @@ interface Association {
   customized_data_images?: { id: number }[];
   cart_rows?: CartRow[];
   order_rows?: OrderRow[];
+  order_slip_details?: OrderSlipDetail[];
   taxes?: { id: number }[];
 }
 
@@ -79,6 +96,7 @@ interface AssociationSchema {
   customized_data_images?: { id: number }[];
   cart_rows?: CartRowSchema[];
   order_rows?: OrderRowSchema[];
+  order_slip_details?: OrderSlipDetailSchema[];
   taxes?: { id: number }[];
 }
 
