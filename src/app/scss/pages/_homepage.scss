@@ -79,6 +79,8 @@ main {
     }
 
     .product {
+      display: flex;
+      flex-direction: column;
       min-width: 200px;
       margin-top: 20px;
       margin-bottom: 20px;
@@ -134,6 +136,7 @@ main {
         }
       }
       .product-buttons {
+        margin-top: auto;
         display: flex;
         gap: 10px;
         align-items: center;
