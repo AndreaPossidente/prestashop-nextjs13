@@ -50,8 +50,8 @@ export default async function Home() {
           <h1>{section.title}</h1>
           <div className="products">
             {products.map((product) => (
-              <Link href={`/${product.link_rewrite}`}>
-                <div key={product.id} className="product">
+              <Link key={product.id} href={`/${product.link_rewrite}`}>
+                <div className="product">
                   <div className="product-image">
                     <Image
                       alt={product.name}
