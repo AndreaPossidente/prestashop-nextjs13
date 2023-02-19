@@ -39,28 +39,28 @@ export default async function Header({}: Props) {
           </div>
           <div className="header-right">
             <div className="header-icons">
-              <Link href={"/"} className="header-icon hide-mobile">
+              <Link href={`/`} className="header-icon hide-mobile">
                 <IoHelpCircleOutline
                   size="1.5rem"
                   style={{ margin: "0.25rem auto" }}
                 />
                 <span>Assistenza</span>
               </Link>
-              <Link href={"/login"} className="header-icon">
+              <Link href={`/login`} className="header-icon">
                 <IoPersonOutline
                   size="1.5rem"
                   style={{ margin: "0.25rem auto" }}
                 />
                 <span>Accedi</span>
               </Link>
-              <Link href={"/"} className="header-icon hide-mobile">
+              <Link href={`/`} className="header-icon hide-mobile">
                 <IoHeartOutline
                   size="1.5rem"
                   style={{ margin: "0.25rem auto" }}
                 />
                 <span>Wishlist</span>
               </Link>
-              <Link href={"/"} className="header-icon">
+              <Link href={`/`} className="header-icon">
                 <IoBagHandleOutline
                   size="1.5rem"
                   style={{ margin: "0.25rem auto" }}
