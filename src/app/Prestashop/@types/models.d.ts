@@ -981,29 +981,132 @@ interface SupplyOrderDetailSchema {
   price_with_order_discount_te: string;
 }
 
-interface SupplyOrderHistorySchema {}
+interface SupplyOrderHistorySchema {
+  id: number;
+  id_supply_order: number;
+  id_employee: number;
+  id_state: number;
+  employee_firstname: string;
+  employee_lastname: string;
+  date_add: string;
+}
 
-interface SupplyOrderReceiptSchema {}
+interface SupplyOrderReceiptHistorySchema {
+  id: number;
+  id_supply_order_detail: number;
+  id_employee: number;
+  id_supply_order_state: number;
+  employee_firstname: string;
+  employee_lastname: string;
+  quantity: number;
+  date_add: string;
+}
 
-interface SupplyOrderStateSchema {}
+interface SupplyOrderStateSchema {
+  id: number;
+  delivery_note: number;
+  editable: number;
+  receipt_state: number;
+  pending_receipt: number;
+  enclosed: number;
+  color: string;
+  name: string;
+}
 
-interface SupplyOrderSchema {}
+interface SupplyOrderSchema {
+  id: number;
+  id_supplier: number;
+  id_lang: number;
+  id_warehouse: number;
+  id_supply_order_state: number;
+  id_currency: number;
+  supplier_name: string;
+  reference: string;
+  date_delivery_expected: string;
+  total_te: string;
+  total_with_discount_te: string;
+  total_ti: string;
+  total_tax: string;
+  discount_rate: string;
+  discount_value_te: string;
+  is_template: number;
+  date_add: string;
+  date_upd: string;
+  associations: AssociationSchema;
+}
 
-interface TagSchema {}
+interface TagSchema {
+  id: number;
+  id_lang: number;
+  name: string;
+}
 
-interface TaxRuleGroupSchema {}
+interface TaxRuleGroupSchema {
+  id: number;
+  name: string;
+  active: number;
+  deleted: number;
+  date_add: string;
+  date_upd: string;
+}
 
-interface TaxRuleSchema {}
+interface TaxRuleSchema {
+  id: number;
+  id_tax_rules_group: number;
+  id_state: number;
+  id_country: number;
+  id_tax: number;
+  zipcode_from: string;
+  zipcode_to: string;
+  behavior: number;
+  description: string;
+}
 
-interface TaxSchema {}
+interface TaxSchema {
+  id: number;
+  rate: string;
+  active: number;
+  deleted: number;
+  name: string;
+}
 
-interface TranslatedConfigurationSchema {}
+interface TranslatedConfigurationSchema {
+  id: number;
+  value: string;
+  date_add: string;
+  date_upd: null | string;
+  name: string;
+  id_shop_group: string;
+  id_shop: string;
+}
 
-interface WarehouseProductLocationSchema {}
+interface WarehouseProductLocationSchema {
+  id: number;
+  id_product: number;
+  id_product_attribute: number;
+  id_warehouse: number;
+  location: string;
+}
 
-interface WarehouseSchema {}
+interface WarehouseSchema {
+  id: number;
+  id_address: number;
+  id_employee: number;
+  id_currency: number;
+  valuation: string;
+  deleted: number;
+  reference: string;
+  name: string;
+  management_type: string;
+  associations: AssociationInterface;
+}
 
-interface WeightRangeSchema {}
+interface WeightRangeSchema {
+  id: number;
+  id_carrier: number;
+  delimiter1: string;
+  delimiter2: string;
+}
 
 interface ZoneSchema {
   id: number;

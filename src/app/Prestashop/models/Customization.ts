@@ -1,8 +1,8 @@
 import Address from "./Address";
 import Cart from "./Cart";
-import Combination from "./Combination";
 import Model from "./Model";
 import Product from "./Product";
+import ProductOption from "./ProductOption";
 
 export default class Customization extends Model {
   static ENDPOINT = "customizations";
@@ -45,6 +45,6 @@ export default class Customization extends Model {
   }
 
   async productAttribute() {
-    return await Combination.findById(this.id_product_attribute);
+    return await ProductOption.findById(this.id_product_attribute);
   }
 }

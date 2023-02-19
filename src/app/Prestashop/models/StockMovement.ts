@@ -6,6 +6,8 @@ import Order from "./Order";
 import StockMovementReason from "./StockMovementReason";
 import ProductOption from "./ProductOption";
 import Stock from "./Stock";
+import Warehouse from "./Warehouse";
+import SupplyOrder from "./SupplyOrder";
 
 export default class StockMovement extends Model {
   static ENDPOINT = "stock_movements";
@@ -67,9 +69,9 @@ export default class StockMovement extends Model {
     return await ProductOption.findById(this.id_product_attribute);
   }
 
-  // async warehouse() {
-  //   return await Warehouse.findById(this.id_warehouse);
-  // }
+  async warehouse() {
+    return await Warehouse.findById(this.id_warehouse);
+  }
 
   async currency() {
     return await Currency.findById(this.id_currency);
@@ -91,7 +93,7 @@ export default class StockMovement extends Model {
     return await Order.findById(this.id_order);
   }
 
-  // async supplyOrder() {
-  //   return await SupplyOrder.findById(this.id_supply_order);
-  // }
+  async supplyOrder() {
+    return await SupplyOrder.findById(this.id_supply_order);
+  }
 }

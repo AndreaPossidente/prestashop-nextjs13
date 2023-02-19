@@ -1,4 +1,8 @@
+import Group from "./Group";
+import Language from "./Language";
 import Model from "./Model";
+import Shop from "./Shop";
+import ShopGroup from "./ShopGroup";
 
 export default class Customer extends Model {
   static ENDPOINT = "customers";
@@ -75,5 +79,21 @@ export default class Customer extends Model {
     this.reset_password_validity =
       new Date(customer.reset_password_validity) || null;
     this.associations = customer.associations;
+  }
+
+  async group() {
+    return await Group.findById(this.id_default_group);
+  }
+
+  async lang() {
+    return await Language.findById(this.id_lang);
+  }
+
+  async shop() {
+    return await Shop.findById(this.id_shop);
+  }
+
+  async shopGroup() {
+    return await ShopGroup.findById(this.id_shop_group);
   }
 }

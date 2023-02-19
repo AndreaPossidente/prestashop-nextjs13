@@ -60,6 +60,19 @@ import Stock from "./Stock";
 
 import Store from "./Store";
 import Supplier from "./Supplier";
+import SupplyOrderDetail from "./SupplyOrderDetail";
+import SupplyOrderHistory from "./SupplyOrderHistory";
+import SupplyOrderReceiptHistory from "./SupplyOrderReceiptHistory";
+import SupplyOrderState from "./SupplyOrderState";
+import SupplyOrder from "./SupplyOrder";
+import Tag from "./Tag";
+import TaxRuleGroup from "./TaxRuleGroup";
+import TaxRule from "./TaxRule";
+import Tax from "./Tax";
+import TranslatedConfiguration from "./TranslatedConfiguration";
+import WarehouseProductLocation from "./WarehouseProductLocation";
+import Warehouse from "./Warehouse";
+import WeightRange from "./WeightRange";
 
 import Zone from "./Zone";
 
@@ -118,5 +131,18 @@ export {
   Stock,
   Store,
   Supplier,
+  SupplyOrderDetail,
+  SupplyOrderHistory,
+  SupplyOrderReceiptHistory,
+  SupplyOrderState,
+  SupplyOrder,
+  Tag,
+  TaxRuleGroup,
+  TaxRule,
+  Tax,
+  TranslatedConfiguration,
+  WarehouseProductLocation,
+  Warehouse,
+  WeightRange,
   Zone,
 };

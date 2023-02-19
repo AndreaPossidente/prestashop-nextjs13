@@ -36,9 +36,11 @@ export default class CustomerMessage extends Model {
   async employee() {
     return await Employee.findById(this.id_employee);
   }
+
   async customerThread() {
     return await CustomerThread.findById(this.id_customer_thread);
   }
+
   async address() {
     return await Address.findById(this.id_address);
   }

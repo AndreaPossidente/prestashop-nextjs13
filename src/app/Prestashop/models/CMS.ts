@@ -32,7 +32,7 @@ export default class CMS extends Model {
     this.content = cms.content;
   }
 
-  category = async () => {
+  async category() {
     return await Category.findById(this.id_cms_category);
-  };
+  }
 }

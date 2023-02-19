@@ -1,4 +1,5 @@
 import Model from "./Model";
+import Shop from "./Shop";
 
 export default class Category extends Model {
   static ENDPOINT = "categories";
@@ -55,5 +56,9 @@ export default class Category extends Model {
    */
   async childrens() {
     return await Category.find({ id_parent: this.id }).catch((err) => null);
+  }
+
+  async shop() {
+    return Shop.findById(this.id_shop_default);
   }
 }

@@ -1,7 +1,9 @@
 import Carrier from "./Carrier";
 import Model from "./Model";
+import PriceRange from "./PriceRange";
 import Shop from "./Shop";
 import ShopGroup from "./ShopGroup";
+import WeightRange from "./WeightRange";
 import Zone from "./Zone";
 
 export default class Delivery extends Model {
@@ -37,13 +39,13 @@ export default class Delivery extends Model {
     return await Carrier.findById(this.id_carrier);
   }
 
-  // async rangePrice() {
-  //   return await RangePrice.findById(this.id_range_price);
-  // }
+  async priceRange() {
+    return await PriceRange.findById(this.id_range_price);
+  }
 
-  // async rangeWeight() {
-  //   return await RangeWeight.findById(this.id_range_weight);
-  // }
+  async weightRange() {
+    return await WeightRange.findById(this.id_range_weight);
+  }
 
   async zone() {
     return await Zone.findById(this.id_zone);

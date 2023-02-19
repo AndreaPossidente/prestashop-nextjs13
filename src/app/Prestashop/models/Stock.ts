@@ -1,6 +1,7 @@
 import Model from "./Model";
 import Product from "./Product";
 import ProductOption from "./ProductOption";
+import Warehouse from "./Warehouse";
 
 export default class Stock extends Model {
   static ENDPOINT = "stocks";
@@ -36,9 +37,9 @@ export default class Stock extends Model {
     this.price_te = Number(stock.price_te);
   }
 
-  // async warehouse() {
-  //   return await Warehouse.findById(this.id_warehouse);
-  // }
+  async warehouse() {
+    return await Warehouse.findById(this.id_warehouse);
+  }
 
   async product() {
     return await Product.findById(this.id_product);

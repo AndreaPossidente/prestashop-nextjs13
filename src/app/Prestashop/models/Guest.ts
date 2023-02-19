@@ -44,12 +44,4 @@ export default class Guest extends Model {
   async customer() {
     return await Customer.findById(this.id_customer);
   }
-
-  // async operatingSystem() {
-  //   return await OperatingSystem.findById(this.id_operating_system);
-  // }
-
-  // async webBrowser() {
-  //   return await WebBrowser.findById(this.id_web_browser);
-  // }
 }

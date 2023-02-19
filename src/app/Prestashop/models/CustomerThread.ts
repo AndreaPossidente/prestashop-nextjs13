@@ -52,28 +52,16 @@ export default class CustomerThread extends Model {
   async customer() {
     return await Customer.findById(this.id_customer);
   }
+
   async order() {
     return await Order.findById(this.id_order);
   }
+
   async product() {
     return await Product.findById(this.id_product);
   }
+
   async contact() {
     return await Contact.findById(this.id_contact);
   }
-
-  // id_lang	isUnsignedId	✔️		Lang ID
-  // id_shop	isUnsignedId	❌		Shop ID
-  // id_customer	isUnsignedId	❌		Customer ID
-  // id_order	isUnsignedId	❌		Order ID
-  // id_product	isUnsignedId	❌		Product ID
-  // id_contact	isUnsignedId	✔️		Contact ID
-  // email	isEmail	❌	255
-  // token	isGenericName	✔️
-  // status		❌
-  // date_add	isDate	❌
-  // date_upd	isDate	❌
-  // associations		❌
-
-  // add non static CRUD
 }

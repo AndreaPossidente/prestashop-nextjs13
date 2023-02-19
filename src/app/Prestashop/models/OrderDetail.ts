@@ -4,6 +4,8 @@ import Model from "./Model";
 import Order from "./Order";
 import OrderInvoice from "./OrderInvoice";
 import Shop from "./Shop";
+import TaxRuleGroup from "./TaxRuleGroup";
+import Warehouse from "./Warehouse";
 
 export default class OrderDetail extends Model {
   static ENDPOINT = "order_details";
@@ -133,9 +135,9 @@ export default class OrderDetail extends Model {
     return await OrderInvoice.findById(this.id_order_invoice);
   }
 
-  // async warehouse() {
-  //   return await Warehouse.findById(this.id_warehouse)
-  // }
+  async warehouse() {
+    return await Warehouse.findById(this.id_warehouse);
+  }
 
   async shop() {
     return await Shop.findById(this.id_shop);
@@ -145,7 +147,7 @@ export default class OrderDetail extends Model {
     return await Customization.findById(this.id_customization);
   }
 
-  // async taxRuleGroup() {
-  //   return await TaxRuleGroup.findById(this.id_tax_rules_group)
-  // }
+  async taxRuleGroup() {
+    return await TaxRuleGroup.findById(this.id_tax_rules_group);
+  }
 }

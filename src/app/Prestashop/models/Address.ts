@@ -4,6 +4,7 @@ import Manufacturer from "./Manufacturer";
 import Model from "./Model";
 import State from "./State";
 import Supplier from "./Supplier";
+import Warehouse from "./Warehouse";
 
 export default class Address extends Model {
   static ENDPOINT = "addresses";
@@ -79,9 +80,9 @@ export default class Address extends Model {
     return await Supplier.findById(this.id_supplier);
   }
 
-  // async warehouse() {
-  //   return await Warehouse.findById(this.id_warehouse);
-  // }
+  async warehouse() {
+    return await Warehouse.findById(this.id_warehouse);
+  }
 
   async country() {
     return await Country.findById(this.id_country);

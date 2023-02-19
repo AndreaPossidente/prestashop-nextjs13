@@ -1,4 +1,5 @@
 import Model from "./Model";
+import TaxRuleGroup from "./TaxRuleGroup";
 
 export default class Carrier extends Model {
   static ENDPOINT = "carriers";
@@ -61,11 +62,7 @@ export default class Carrier extends Model {
     this.delay = carrier.delay;
   }
 
-  // async taxRulesGroup() {
-  //   return await TaxRulesGroup.findById(this.id_tax_rules_group);
-  // }
-
-  // async reference() {
-  //   return await Referenc.findById(this.id_reference);
-  // }
+  async taxRuleGroup() {
+    return await TaxRuleGroup.findById(this.id_tax_rules_group);
+  }
 }

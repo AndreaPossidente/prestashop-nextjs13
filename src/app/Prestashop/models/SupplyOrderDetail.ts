@@ -1,4 +1,6 @@
 import Model from "./Model";
+import ProductOption from "./ProductOption";
+import SupplyOrder from "./SupplyOrder";
 
 export default class SupplyOrderDetail extends Model {
   static ENDPOINT = "supply_order_details";
@@ -58,5 +60,13 @@ export default class SupplyOrderDetail extends Model {
     this.price_with_order_discount_te = Number(
       supplyOrderDetail.price_with_order_discount_te
     );
+  }
+
+  async supplyOrder() {
+    return await SupplyOrder.findById(this.id_supply_order);
+  }
+
+  async productAttribute() {
+    return await ProductOption.findById(this.id_product_attribute);
   }
 }

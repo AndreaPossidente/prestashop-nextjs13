@@ -45,15 +45,4 @@ export default class StockAvailable extends Model {
   async shopGroup() {
     return await ShopGroup.findById(this.id_shop_group);
   }
-
-  //   id_product	isUnsignedId	✔️		Product ID
-  //   id_product_attribute	isUnsignedId	✔️		Product attribute ID
-  //   id_shop	isUnsignedId	❌		Shop ID
-  //   id_shop_group	isUnsignedId	❌		Shop group ID
-  //   quantity	isInt	✔️	10
-  //   depends_on_stock	isBool	✔️
-  //   out_of_stock	isInt	✔️
-  //   location	isString	❌	255
-
-  // add non static CRUD
 }

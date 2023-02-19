@@ -70,7 +70,18 @@ interface OrderSlipDetail {
   amount_tax_incl: number;
 }
 
+interface SupplyOrderDetail {
+  id: number;
+  id_product: number;
+  id_product_attribute: number;
+  supplier_reference: string;
+  product_name: string;
+}
+
 interface Association {
+  stocks?: { id: number }[];
+  carriers?: { id: number }[];
+  shops?: { id: number; name: string }[];
   products?: { id: number }[];
   categories?: { id: number }[];
   addresses?: { id: number }[];
@@ -83,9 +94,13 @@ interface Association {
   order_rows?: OrderRow[];
   order_slip_details?: OrderSlipDetail[];
   taxes?: { id: number }[];
+  supply_order_details?: SupplyOrderDetail[];
 }
 
 interface AssociationSchema {
+  stocks?: { id: number }[];
+  carriers?: { id: number }[];
+  shops?: { id: number; name: string }[];
   products?: { id: number }[];
   categories?: { id: number }[];
   addresses?: { id: number }[];
@@ -98,6 +113,7 @@ interface AssociationSchema {
   order_rows?: OrderRowSchema[];
   order_slip_details?: OrderSlipDetailSchema[];
   taxes?: { id: number }[];
+  supply_order_details?: SupplyOrderDetail[];
 }
 
 type ImageSchemaType = {
