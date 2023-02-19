@@ -212,10 +212,11 @@ export default class Product extends Model {
     });
 
     const json = await res.json();
+
     const objects = new Array();
     if (this.ENDPOINT)
       json[this.ENDPOINT].forEach((obj: ProductSchema) => {
-        objects.push(new this(obj));
+        objects.push(new Product(obj));
       });
 
     return objects;
@@ -233,7 +234,7 @@ export default class Product extends Model {
     });
 
     const json = await res.json();
-    return new this(this.MODEL_NAME || json[this.ENDPOINT][0]);
+    return new Product(this.MODEL_NAME || json[this.ENDPOINT][0]);
   }
 
   async getManufacturer() {

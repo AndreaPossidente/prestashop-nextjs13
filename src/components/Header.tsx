@@ -20,13 +20,15 @@ export default async function Header({}: Props) {
       <Topbar />
       <div className="header-main">
         <div className="container">
-          <Image
-            alt="NextShop"
-            src={"https://www.jsdev.it/img/logo-1676473843.jpg"}
-            style={{ objectFit: "contain" }}
-            width={140}
-            height={40}
-          />
+          <Link href="/">
+            <Image
+              alt="NextShop"
+              src={"https://www.jsdev.it/img/logo-1676473843.jpg"}
+              style={{ objectFit: "contain" }}
+              width={140}
+              height={40}
+            />
+          </Link>
           <div className="search-container">
             <input
               type="search"
