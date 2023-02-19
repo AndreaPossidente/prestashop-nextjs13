@@ -48,6 +48,7 @@ export default class Model extends Prestashop {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 30 },
     });
 
     const json = await res.json();
@@ -74,6 +75,7 @@ export default class Model extends Prestashop {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 30 },
     });
 
     const json = await res.json();
@@ -108,6 +110,7 @@ export default class Model extends Prestashop {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 30 },
     });
 
     const json = await res.json();

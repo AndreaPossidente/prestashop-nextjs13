@@ -8,6 +8,7 @@ export default class Authentication extends Prestashop {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 0 },
     });
     const json = await userRes.json();
     const user = json.customers[0];

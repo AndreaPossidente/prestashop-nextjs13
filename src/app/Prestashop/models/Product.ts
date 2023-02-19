@@ -208,6 +208,7 @@ export default class Product extends Model {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 30 },
     });
 
     const json = await res.json();
@@ -228,6 +229,7 @@ export default class Product extends Model {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 30 },
     });
 
     const json = await res.json();
