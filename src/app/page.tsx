@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import {
   IoBagAddOutline,
   IoGitCompareOutline,
@@ -108,7 +109,7 @@ export default async function Home() {
     <main>
       <div className="container">
         <section className="hero"></section>
-        {product1JSX}
+        <Suspense fallback={<div>Loading...</div>}>{product1JSX}</Suspense>
       </div>
     </main>
   );
