@@ -25,9 +25,9 @@ export default class Combination extends Model {
   low_stock_alert: boolean;
   default_on: boolean;
   available_date: Date;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 
-  constructor(combination: CombinationInterface) {
+  constructor(combination: CombinationSchema) {
     super();
     this.id = combination.id;
     this.id_product = combination.id_product;

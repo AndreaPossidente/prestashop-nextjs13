@@ -16,9 +16,9 @@ export default class Customization extends Model {
   quantity_refunded: number;
   quantity_returned: number;
   in_cart: boolean;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 
-  constructor(customization: CustomizationInterface) {
+  constructor(customization: CustomizationSchema) {
     super();
     this.id = customization.id;
     this.id_address_delivery = customization.id_address_delivery;

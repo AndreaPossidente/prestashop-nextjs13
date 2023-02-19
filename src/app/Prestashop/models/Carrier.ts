@@ -35,7 +35,7 @@ export default class Carrier extends Model {
   position: number;
   delay: string;
 
-  constructor(carrier: CarrierInterface) {
+  constructor(carrier: CarrierSchema) {
     super();
     this.id = carrier.id;
     this.id_tax_rules_group = carrier.id_tax_rules_group;

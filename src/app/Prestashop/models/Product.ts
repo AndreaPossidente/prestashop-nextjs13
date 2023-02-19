@@ -78,7 +78,7 @@ export default class Product extends Model {
   description_short: string;
   available_now: string;
   available_later: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
   prices: {
     price: number;
     wholesale_price: number;
@@ -89,7 +89,7 @@ export default class Product extends Model {
   category: Category | undefined;
   manufacturer: Manufacturer | undefined;
 
-  constructor(product: ProductInterface) {
+  constructor(product: ProductSchema) {
     super();
     this.id = product.id;
     this.id_manufacturer = product.id_manufacturer;
@@ -214,7 +214,7 @@ export default class Product extends Model {
     const json = await res.json();
     const objects = new Array();
     if (this.ENDPOINT)
-      json[this.ENDPOINT].forEach((obj: ProductInterface) => {
+      json[this.ENDPOINT].forEach((obj: ProductSchema) => {
         objects.push(new this(obj));
       });
 

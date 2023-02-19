@@ -20,9 +20,9 @@ export default class Category extends Model {
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 
-  constructor(category: CategoryInterface) {
+  constructor(category: CategorySchema) {
     super();
     this.id = category.id;
     this.id_parent = category.id_parent;

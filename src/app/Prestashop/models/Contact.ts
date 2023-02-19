@@ -9,7 +9,7 @@ export default class Contact extends Model {
   name: string;
   description: string;
 
-  constructor(contact: ContactInterface) {
+  constructor(contact: ContactSchema) {
     super();
     this.id = contact.id;
     this.email = contact.email;

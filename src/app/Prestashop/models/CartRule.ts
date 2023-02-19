@@ -40,7 +40,7 @@ export default class CartRule extends Model {
   date_add: Date;
   date_upd: Date;
 
-  constructor(cartRule: CartRuleInterface) {
+  constructor(cartRule: CartRuleSchema) {
     super();
     this.id = cartRule.id;
     this.id_customer = cartRule.id_customer;

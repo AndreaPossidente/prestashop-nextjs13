@@ -36,9 +36,9 @@ export default class Customer extends Model {
   date_upd: Date;
   reset_password_token: string;
   reset_password_validity: Date | null;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 
-  constructor(customer: CustomerInterface) {
+  constructor(customer: CustomerSchema) {
     super();
     this.id = customer.id;
     this.id_default_group = customer.id_default_group;

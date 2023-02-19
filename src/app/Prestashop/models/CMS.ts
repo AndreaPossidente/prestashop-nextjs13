@@ -17,7 +17,7 @@ export default class CMS extends Model {
   link_rewrite: string;
   content: string;
 
-  constructor(cms: CMSInterface) {
+  constructor(cms: CMSSchema) {
     super();
     this.id = cms.id;
     this.id_cms_category = cms.id_cms_category;

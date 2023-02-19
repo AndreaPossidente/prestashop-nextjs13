@@ -21,7 +21,7 @@ export default class Delivery extends Model {
   id_shop_group: number;
   price: number;
 
-  constructor(delivery: DeliveryInterface) {
+  constructor(delivery: DeliverySchema) {
     super();
     this.id = delivery.id;
     this.id_carrier = delivery.id_carrier;

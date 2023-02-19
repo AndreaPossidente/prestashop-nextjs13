@@ -14,9 +14,9 @@ export default class Manufacturer extends Model {
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 
-  constructor(manufacturer: ManufacturerInterface) {
+  constructor(manufacturer: ManufacturerSchema) {
     super();
     this.id = Number(manufacturer.id);
     this.active = manufacturer.active == 1 ? true : false;

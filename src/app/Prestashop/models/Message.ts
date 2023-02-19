@@ -16,7 +16,7 @@ export default class Message extends Model {
   private: boolean;
   date_add: Date;
 
-  constructor(message: MessageInterface) {
+  constructor(message: MessageSchema) {
     super();
     this.id = message.id;
     this.id_cart = message.id_cart;

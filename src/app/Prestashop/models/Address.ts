@@ -39,7 +39,7 @@ export default class Address extends Model {
   date_add: Date;
   date_upd: Date;
 
-  constructor(address: AddressInterface) {
+  constructor(address: AddressSchema) {
     super();
 
     this.id = address.id;

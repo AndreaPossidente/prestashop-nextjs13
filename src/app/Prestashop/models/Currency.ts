@@ -17,7 +17,7 @@ export default class Currency extends Model {
   modified: boolean;
   pattern: string;
 
-  constructor(currency: CurrencyInterface) {
+  constructor(currency: CurrencySchema) {
     super();
     this.id = currency.id;
     this.names = currency.names;

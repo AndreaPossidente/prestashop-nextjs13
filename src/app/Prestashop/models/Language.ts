@@ -12,7 +12,7 @@ export default class Language extends Model {
   date_format_lite: string;
   date_format_full: string;
 
-  constructor(language: LanguageInterface) {
+  constructor(language: LanguageSchema) {
     super();
     this.id = language.id;
     this.name = language.name;

@@ -1,4 +1,4 @@
-interface AddressInterface {
+interface AddressSchema {
   id: number;
   id_customer: number;
   id_manufacturer: number;
@@ -24,7 +24,7 @@ interface AddressInterface {
   date_upd: string;
 }
 
-interface AttachmentInterface {
+interface AttachmentSchema {
   id: number;
   file: string;
   file_name: string;
@@ -32,10 +32,10 @@ interface AttachmentInterface {
   mime: string;
   name: string;
   description: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface CarrierInterface {
+interface CarrierSchema {
   id: number;
   deleted: number;
   is_module: number;
@@ -60,7 +60,7 @@ interface CarrierInterface {
   delay: string;
 }
 
-interface CartRuleInterface {
+interface CartRuleSchema {
   id: number;
   id_customer: number;
   date_from: string;
@@ -96,7 +96,7 @@ interface CartRuleInterface {
   name: string;
 }
 
-interface CartInterface {
+interface CartSchema {
   id: number;
   id_address_delivery: number;
   id_address_invoice: number;
@@ -116,10 +116,10 @@ interface CartInterface {
   allow_seperated_package: string | number;
   date_add: string;
   date_upd: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface CategoryInterface {
+interface CategorySchema {
   id: number;
   id_parent: number;
   id_shop_default: number;
@@ -135,10 +135,10 @@ interface CategoryInterface {
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface CombinationInterface {
+interface CombinationSchema {
   id: number;
   id_product: number;
   location: string;
@@ -159,10 +159,10 @@ interface CombinationInterface {
   low_stock_alert: number;
   default_on: number;
   available_date: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface ConfigurationInterface {
+interface ConfigurationSchema {
   id: number;
   id_shop_group: number;
   id_shop: number;
@@ -172,7 +172,7 @@ interface ConfigurationInterface {
   date_upd: string;
 }
 
-interface ContactInterface {
+interface ContactSchema {
   id: number;
   email: string;
   customer_service: number;
@@ -180,7 +180,7 @@ interface ContactInterface {
   description: string;
 }
 
-interface CMSInterface {
+interface CMSSchema {
   id: number;
   id_cms_category: number;
   position: number;
@@ -194,7 +194,7 @@ interface CMSInterface {
   content: string;
 }
 
-interface CountryInterface {
+interface CountrySchema {
   id: number;
   id_zone: number;
   id_currency: number;
@@ -209,7 +209,7 @@ interface CountryInterface {
   name: string;
 }
 
-interface CurrencyInterface {
+interface CurrencySchema {
   id: number;
   names: string;
   name: string;
@@ -225,7 +225,7 @@ interface CurrencyInterface {
   pattern: string;
 }
 
-interface CustomerMessageInterface {
+interface CustomerMessageSchema {
   id: number;
   id_employee: number;
   id_customer_thread: number;
@@ -239,7 +239,7 @@ interface CustomerMessageInterface {
   read: number;
 }
 
-interface CustomerThreadInterface {
+interface CustomerThreadSchema {
   id: number;
   id_lang: number;
   id_shop: number;
@@ -252,10 +252,10 @@ interface CustomerThreadInterface {
   status: number;
   date_add: string;
   date_upd: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface CustomerInterface {
+interface CustomerSchema {
   id: number;
   id_default_group: number;
   id_lang: number;
@@ -289,10 +289,10 @@ interface CustomerInterface {
   date_upd: string;
   reset_password_token: string;
   reset_password_validity: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface CustomizationInterface {
+interface CustomizationSchema {
   id: number;
   id_address_delivery: number;
   id_cart: number;
@@ -302,10 +302,10 @@ interface CustomizationInterface {
   quantity_refunded: number;
   quantity_returned: number;
   in_cart: number;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface DeliveryInterface {
+interface DeliverySchema {
   id: number;
   id_carrier: number;
   id_range_price: number;
@@ -316,7 +316,7 @@ interface DeliveryInterface {
   price: number;
 }
 
-interface EmployeeInterface {
+interface EmployeeSchema {
   id: number;
   id_lang: number;
   last_passwd_gen: string;
@@ -346,7 +346,7 @@ interface EmployeeInterface {
   has_enabled_gravatar: number;
 }
 
-interface GroupInterface {
+interface GroupSchema {
   id: number;
   reduction: string;
   price_display_method: number;
@@ -356,7 +356,7 @@ interface GroupInterface {
   name: string;
 }
 
-interface GuestInterface {
+interface GuestSchema {
   id: number;
   id_customer: number;
   id_operating_system: number;
@@ -375,7 +375,7 @@ interface GuestInterface {
   mobile_theme: number;
 }
 
-interface ImageInterface {
+interface ImageSchema {
   general?: ImageSchemaType;
   products?: ImageSchemaType;
   categories?: ImageSchemaType;
@@ -385,7 +385,7 @@ interface ImageInterface {
   customizations?: ImageSchemaType;
 }
 
-interface ImageTypeInterface {
+interface ImageTypeSchema {
   id: number;
   name: string;
   width: number;
@@ -397,7 +397,7 @@ interface ImageTypeInterface {
   stores: number;
 }
 
-interface LanguageInterface {
+interface LanguageSchema {
   id: number;
   name: string;
   iso_code: string;
@@ -408,7 +408,7 @@ interface LanguageInterface {
   date_format_full: string;
 }
 
-interface ManufacturerInterface {
+interface ManufacturerSchema {
   id: number;
   active: number;
   link_rewrite: string;
@@ -420,10 +420,10 @@ interface ManufacturerInterface {
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 }
 
-interface MessageInterface {
+interface MessageSchema {
   id: number;
   id_cart: number;
   id_order: number;
@@ -434,7 +434,58 @@ interface MessageInterface {
   date_add: string;
 }
 
-interface ProductInterface {
+interface OrderSchema {
+  id: number;
+  id_address_delivery: number;
+  id_address_invoice: number;
+  id_cart: number;
+  id_currency: number;
+  id_lang: number;
+  id_customer: number;
+  id_carrier: number;
+  id_shop_group: number;
+  id_shop: number;
+  current_state: number;
+  module: string;
+  invoice_number: number;
+  invoice_date: string;
+  delivery_number: number;
+  delivery_date: string;
+  valid: number;
+  date_add: string;
+  date_upd: string;
+  shipping_number: string;
+  note: string;
+  secure_key: string;
+  payment: string;
+  recyclable: number;
+  gift: number;
+  gift_message: string;
+  mobile_theme: number;
+  total_discounts: string;
+  total_discounts_tax_incl: string;
+  total_discounts_tax_excl: string;
+  total_paid: string;
+  total_paid_tax_incl: string;
+  total_paid_tax_exl: string;
+  total_paid_real: string;
+  total_products: string;
+  total_products_wt: string;
+  total_shipping: string;
+  total_shipping_tax_incl: string;
+  total_shipping_tax_excl: string;
+  carrier_tax_rate: string;
+  total_wrapping: string;
+  total_wrapping_tax_incl: string;
+  total_wrapping_tax_excl: string;
+  round_mode: number;
+  round_type: number;
+  conversion_rate: string;
+  reference: string;
+  associations: AssociationSchema;
+}
+
+interface ProductSchema {
   id: number;
   id_manufacturer: number;
   id_supplier: number;
@@ -507,7 +558,7 @@ interface ProductInterface {
   description_short: string;
   available_now: string;
   available_later: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
   price_normal: string;
   price_reduced: string;
 }

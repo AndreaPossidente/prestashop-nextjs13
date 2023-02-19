@@ -39,8 +39,8 @@ export default class Cart extends Model {
   allow_seperated_package: boolean;
   date_add: Date;
   date_upd: Date;
-  associations: AssociationInterface;
-  constructor(cart: CartInterface) {
+  associations: AssociationSchema;
+  constructor(cart: CartSchema) {
     super();
     this.id = Number(cart.id);
     this.id_address_delivery = Number(cart.id_address_delivery);

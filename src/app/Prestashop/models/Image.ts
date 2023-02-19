@@ -2,7 +2,7 @@ import Model from "./Model";
 export default class Image extends Model {
   static ENDPOINT = "images";
 
-  constructor(image: ImageInterface) {
+  constructor(image: ImageSchema) {
     super();
   }
 

@@ -22,9 +22,9 @@ export default class CustomerThread extends Model {
   status: number;
   date_add: string;
   date_upd: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 
-  constructor(customerThread: CustomerThreadInterface) {
+  constructor(customerThread: CustomerThreadSchema) {
     super();
     this.id = customerThread.id;
     this.id_lang = customerThread.id_lang;

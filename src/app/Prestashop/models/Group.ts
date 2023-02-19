@@ -11,7 +11,7 @@ export default class Group extends Model {
   date_upd: Date;
   name: string;
 
-  constructor(group: GroupInterface) {
+  constructor(group: GroupSchema) {
     super();
     this.id = group.id;
     this.reduction = Number(group.reduction);

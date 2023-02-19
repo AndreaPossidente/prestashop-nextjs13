@@ -21,7 +21,7 @@ export default class Guest extends Model {
   accept_language: string;
   mobile_theme: boolean;
 
-  constructor(guest: GuestInterface) {
+  constructor(guest: GuestSchema) {
     super();
     this.id = guest.id;
     this.id_customer = guest.id_customer;

@@ -15,7 +15,7 @@ export default class Configuration extends Model {
   date_add: Date;
   date_upd: Date;
 
-  constructor(configuration: ConfigurationInterface) {
+  constructor(configuration: ConfigurationSchema) {
     super();
     this.id = configuration.id;
     this.value = configuration.value;

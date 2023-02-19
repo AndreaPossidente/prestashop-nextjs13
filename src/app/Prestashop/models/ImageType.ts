@@ -13,7 +13,7 @@ export default class ImageType extends Model {
   suppliers: boolean;
   stores: boolean;
 
-  constructor(imageType: ImageTypeInterface) {
+  constructor(imageType: ImageTypeSchema) {
     super();
     this.id = imageType.id;
     this.name = imageType.name;

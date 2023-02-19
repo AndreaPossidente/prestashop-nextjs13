@@ -18,7 +18,7 @@ export default class CustomerMessage extends Model {
   date_upd: Date;
   read: boolean;
 
-  constructor(customerMessage: CustomerMessageInterface) {
+  constructor(customerMessage: CustomerMessageSchema) {
     super();
     this.id = customerMessage.id;
     this.id_employee = customerMessage.id_employee;

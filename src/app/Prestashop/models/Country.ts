@@ -18,7 +18,7 @@ export default class Country extends Model {
   display_tax_label: boolean;
   name: string;
 
-  constructor(country: CountryInterface) {
+  constructor(country: CountrySchema) {
     super();
     this.id = country.id;
     this.id_zone = country.id_zone;

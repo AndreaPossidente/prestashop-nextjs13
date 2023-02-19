@@ -35,7 +35,7 @@ export default class Employee extends Model {
   reset_password_validity: string;
   has_enabled_gravatar: boolean;
 
-  constructor(employee: EmployeeInterface) {
+  constructor(employee: EmployeeSchema) {
     super();
     this.id = employee.id;
     this.id_lang = employee.id_lang;

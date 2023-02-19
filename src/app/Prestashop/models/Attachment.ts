@@ -10,9 +10,9 @@ export default class Attachment extends Model {
   mime: string;
   name: string;
   description: string;
-  associations: AssociationInterface;
+  associations: AssociationSchema;
 
-  constructor(attachment: AttachmentInterface) {
+  constructor(attachment: AttachmentSchema) {
     super();
     this.id = Number(attachment.id);
     this.file = attachment.file;
