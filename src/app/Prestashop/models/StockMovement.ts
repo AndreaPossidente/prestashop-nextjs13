@@ -4,11 +4,36 @@ import Currency from "./Currency";
 import Employee from "./Employee";
 import Order from "./Order";
 import StockMovementReason from "./StockMovementReason";
+import ProductOption from "./ProductOption";
+import Stock from "./Stock";
 
 export default class StockMovement extends Model {
-  static ENDPOINT = "stock_Movement";
+  static ENDPOINT = "stock_movements";
 
-  constructor(stockMovement) {
+  id: number;
+  id_product: number;
+  id_product_attribute: number;
+  id_warehouse: number;
+  id_currency: number;
+  id_employee: number;
+  id_stock: number;
+  id_stock_mvt_reason: number;
+  id_order: number;
+  id_supply_order: number;
+  management_type: string;
+  product_name: string;
+  ean13: string;
+  upc: string;
+  reference: string;
+  mpn: string;
+  physical_quantity: number;
+  sign: number;
+  last_wa: number;
+  current_wa: number;
+  price_te: number;
+  date_add: Date;
+
+  constructor(stockMovement: StockMovementSchema) {
     super();
     this.id = stockMovement.id;
     this.id_product = stockMovement.id_product;
@@ -28,10 +53,10 @@ export default class StockMovement extends Model {
     this.mpn = stockMovement.mpn;
     this.physical_quantity = stockMovement.physical_quantity;
     this.sign = stockMovement.sign;
-    this.last_wa = stockMovement.last_wa;
-    this.current_wa = stockMovement.current_wa;
-    this.price_te = stockMovement.price_te;
-    this.date_add = stockMovement.date_add;
+    this.last_wa = Number(stockMovement.last_wa);
+    this.current_wa = Number(stockMovement.current_wa);
+    this.price_te = Number(stockMovement.price_te);
+    this.date_add = new Date(stockMovement.date_add);
   }
 
   async product() {
@@ -39,12 +64,12 @@ export default class StockMovement extends Model {
   }
 
   async productAttribute() {
-    return await ProductAttribute.findById(this.id_product_attribute);
+    return await ProductOption.findById(this.id_product_attribute);
   }
 
-  async warehouse() {
-    return await Warehouse.findById(this.id_warehouse);
-  }
+  // async warehouse() {
+  //   return await Warehouse.findById(this.id_warehouse);
+  // }
 
   async currency() {
     return await Currency.findById(this.id_currency);
@@ -66,31 +91,7 @@ export default class StockMovement extends Model {
     return await Order.findById(this.id_order);
   }
 
-  async supplyOrder() {
-    return await SupplyOrder.findById(this.id_supply_order);
-  }
-
-  // id_product		❌	Product ID
-  // id_product_attribute		❌	Product attribute ID
-  // id_warehouse		❌	Warehouse ID
-  // id_currency		❌	Currency ID
-  // management_type		❌
-  // id_employee	isUnsignedId	✔️	Employee ID
-  // id_stock	isUnsignedId	✔️
-  // id_stock_mvt_reason	isUnsignedId	✔️
-  // id_order	isUnsignedId	❌	Order ID
-  // id_supply_order	isUnsignedId	❌
-  // product_name		❌
-  // ean13		❌
-  // upc		❌
-  // reference		❌
-  // mpn		❌
-  // physical_quantity	isUnsignedInt	✔️
-  // sign	isInt	✔️
-  // last_wa	isPrice	❌
-  // current_wa	isPrice	❌
-  // price_te	isPrice	✔️
-  // date_add	isDate	✔️
-
-  // add non static CRUD
+  // async supplyOrder() {
+  //   return await SupplyOrder.findById(this.id_supply_order);
+  // }
 }

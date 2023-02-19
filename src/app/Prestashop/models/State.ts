@@ -5,14 +5,21 @@ import Zone from "./Zone";
 export default class State extends Model {
   static ENDPOINT = "states";
 
-  constructor(state) {
+  id: number;
+  id_zone: number;
+  id_country: number;
+  iso_code: string;
+  name: string;
+  active: boolean;
+
+  constructor(state: StateSchema) {
     super();
     this.id = state.id;
     this.id_zone = state.id_zone;
     this.id_country = state.id_country;
     this.iso_code = state.iso_code;
     this.name = state.name;
-    this.active = state.active;
+    this.active = state.active == 1 ? true : false;
   }
 
   async zone() {
@@ -22,12 +29,4 @@ export default class State extends Model {
   async country() {
     return await Country.findById(this.id_country);
   }
-
-  // id_zone	isUnsignedId	✔️		Zone ID
-  // id_country	isUnsignedId	✔️		Country ID
-  // iso_code	isStateIsoCode	✔️	7
-  // name	isGenericName	✔️	32
-  // active	isBool	❌
-
-  // add non static CRUD
 }

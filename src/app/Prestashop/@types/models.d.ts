@@ -669,11 +669,32 @@ interface ProductFeatureSchema {
   name: string;
 }
 
-interface ProductOptionValueSchema {}
+interface ProductOptionValueSchema {
+  id: number;
+  id_attribute_group: number;
+  color: string;
+  position: number;
+  name: string;
+}
 
-interface ProductOptionSchema {}
+interface ProductOptionSchema {
+  id: number;
+  is_color_group: number;
+  position: number;
+  name: string;
+  public_name: string;
+  associations: AssociationSchema;
+}
 
-interface ProductSupplierSchema {}
+interface ProductSupplierSchema {
+  id: number;
+  id_product: number;
+  id_product_attribute: number;
+  id_supplier: number;
+  id_currency: number;
+  product_supplier_reference: string;
+  product_supplier_price_te: string;
+}
 
 interface ProductSchema {
   id: number;
@@ -753,33 +774,212 @@ interface ProductSchema {
   price_reduced: string;
 }
 
-interface SearchSchema {}
+interface SearchSchema {
+  products?: ProductSchema[];
+  categories?: CategorySchema[];
+  errors?: { code: number; message: string };
+}
 
-interface ShopGroupSchema {}
+interface ShopGroupSchema {
+  id: number;
+  name: string;
+  color: string;
+  share_customer: number;
+  share_order: number;
+  share_stock: number;
+  active: number;
+  deleted: number;
+}
 
-interface ShopUrlSchema {}
+interface ShopUrlSchema {
+  id: number;
+  id_shop: number;
+  active: number;
+  main: number;
+  domain: string;
+  domain_ssl: string;
+  physical_uri: string;
+  virtual_uri: string;
+}
 
-interface ShopSchema {}
+interface ShopSchema {
+  id: number;
+  id_shop_group: number;
+  id_category: number;
+  active: number;
+  deleted: number;
+  name: string;
+  color: string;
+  theme_name: string;
+}
 
-interface SpecificPriceRuleSchema {}
+interface SpecificPriceRuleSchema {
+  id: number;
+  id_shop: number;
+  id_country: number;
+  id_currency: number;
+  id_group: number;
+  name: string;
+  from_quantity: number;
+  price: string;
+  reduction: string;
+  reduction_tax: number;
+  reduction_type: string;
+  from: string;
+  to: string;
+}
 
-interface SpecificPriceSchema {}
+interface SpecificPriceSchema {
+  id: number;
+  id_shop_group: number;
+  id_shop: number;
+  id_cart: number;
+  id_product: number;
+  id_product_attribute: number;
+  id_currency: number;
+  id_country: number;
+  id_group: number;
+  id_customer: number;
+  id_specific_price_rule: number;
+  price: string;
+  from_quantity: number;
+  reduction: string;
+  reduction_tax: number;
+  reduction_type: string;
+  from: string;
+  to: string;
+}
 
-interface StateSchema {}
+interface StateSchema {
+  id: number;
+  id_zone: number;
+  id_country: number;
+  iso_code: string;
+  name: string;
+  active: number;
+}
 
-interface StockAvailableSchema {}
+interface StockAvailableSchema {
+  id: number;
+  id_product: number;
+  id_product_attribute: number;
+  id_shop: number;
+  id_shop_group: number;
+  quantity: number;
+  depends_on_stock: number;
+  out_of_stock: number;
+  location: string;
+}
 
-interface StockMovementReasonSchema {}
+interface StockMovementReasonSchema {
+  id: number;
+  sign: number;
+  deleted: number;
+  date_add: string;
+  date_upd: string;
+  name: string;
+}
 
-interface StockMovementSchema {}
+interface StockMovementSchema {
+  id: number;
+  id_product: number;
+  id_product_attribute: number;
+  id_warehouse: number;
+  id_currency: number;
+  id_employee: number;
+  id_stock: number;
+  id_stock_mvt_reason: number;
+  id_order: number;
+  id_supply_order: number;
+  management_type: string;
+  product_name: string;
+  ean13: string;
+  upc: string;
+  reference: string;
+  mpn: string;
+  physical_quantity: number;
+  sign: number;
+  last_wa: string;
+  current_wa: string;
+  price_te: string;
+  date_add: string;
+}
 
-interface StockSchema {}
+interface StockSchema {
+  id: number;
+  id_warehouse: number;
+  id_product: number;
+  id_product_attribute: number;
+  real_quantity: number;
+  reference: string;
+  ean13: string;
+  isbn: string;
+  upc: string;
+  mpn: string;
+  physical_quantity: number;
+  usable_quantity: number;
+  price_te: string;
+}
 
-interface StoreSchema {}
+interface StoreSchema {
+  id: number;
+  id_country: number;
+  id_state: number;
+  hours: string;
+  postcode: string;
+  city: string;
+  latitude: string;
+  longitude: string;
+  phone: string;
+  fax: string;
+  email: string;
+  active: number;
+  date_add: string;
+  date_upd: string;
+  name: string;
+  address1: string;
+  address2: string;
+  note: string;
+}
 
-interface SupplierSchema {}
+interface SupplierSchema {
+  id: number;
+  link_rewrite: string;
+  name: string;
+  active: number;
+  date_add: string;
+  date_upd: string;
+  description: string;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+}
 
-interface SupplyOrderDetailSchema {}
+interface SupplyOrderDetailSchema {
+  id: number;
+  id_supply_order: number;
+  id_product_attribute: number;
+  reference: string;
+  supplier_reference: string;
+  name: string;
+  ean13: string;
+  isbn: string;
+  upc: string;
+  mpn: string;
+  exchange_rate: string;
+  unit_price_te: string;
+  quantity_expected: number;
+  quantity_received: number;
+  price_te: string;
+  discount_rate: string;
+  discount_value_te: string;
+  price_with_discount_te: string;
+  tax_rate: string;
+  tax_value: string;
+  price_ti: string;
+  tax_value_with_order_discount: string;
+  price_with_order_discount_te: string;
+}
 
 interface SupplyOrderHistorySchema {}
 
@@ -805,4 +1005,8 @@ interface WarehouseSchema {}
 
 interface WeightRangeSchema {}
 
-interface ZoneSchema {}
+interface ZoneSchema {
+  id: number;
+  name: string;
+  active: number;
+}

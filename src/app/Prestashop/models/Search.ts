@@ -3,9 +3,14 @@ import Model from "./Model";
 export default class Search extends Model {
   static ENDPOINT = "search";
 
-  constructor(productSupplier) {
+  products?: ProductSchema[];
+  categories?: CategorySchema[];
+  errors?: { code: number; message: string };
+  constructor(search: SearchSchema) {
     super();
-    this.id = productSupplier.id;
+    this.products = search.products;
+    this.categories = search.categories;
+    this.errors = search.errors;
   }
 
   //   error		❌

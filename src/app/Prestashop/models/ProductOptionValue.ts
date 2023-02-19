@@ -1,10 +1,16 @@
-import Group from "./Group";
 import Model from "./Model";
+import ProductOption from "./ProductOption";
 
 export default class ProductOptionValue extends Model {
   static ENDPOINT = "product_option_values";
 
-  constructor(productOptionValue) {
+  id: number;
+  id_attribute_group: number;
+  color: string;
+  position: number;
+  name: string;
+
+  constructor(productOptionValue: ProductOptionValueSchema) {
     super();
     this.id = productOptionValue.id;
     this.id_attribute_group = productOptionValue.id_attribute_group;
@@ -14,13 +20,6 @@ export default class ProductOptionValue extends Model {
   }
 
   async attributeGroup() {
-    return await Group.findById(this.id_attribute_group);
+    return await ProductOption.findById(this.id_attribute_group);
   }
-
-  //   id_attribute_group	isUnsignedId	✔️
-  //   color	isColor	❌
-  //   position	isInt	❌
-  //   name	isGenericName	✔️	128
-
-  // add non static CRUD
 }
