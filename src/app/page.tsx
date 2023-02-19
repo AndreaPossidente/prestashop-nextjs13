@@ -26,8 +26,6 @@ export default async function Home() {
 
   const shop: CMS = await CMS.findOne({ link_rewrite: "index" });
 
-  console.log(shop.content.replace("<p>", "").replace("</p>", ""));
-
   const homepage: HomeInterface = JSON.parse(
     shop.content.replace("<p>", "").replace("</p>", "")
   );
