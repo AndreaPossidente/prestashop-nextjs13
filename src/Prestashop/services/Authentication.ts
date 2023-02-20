@@ -1,9 +1,10 @@
 import Prestashop from "@/Prestashop/Prestashop";
+import { User } from "next-auth";
 import { Customer } from "../models";
 
 const bcrypt = require("bcryptjs");
 export default class Authentication extends Prestashop {
-  static async login(email: any, password: any): Promise<any> {
+  static async login(email: string, password: string): Promise<User | null> {
     const uri = `${this.PS_URI}/api/customers?ws_key=${this.PS_API_KEY}&io_format=JSON&display=full&filter[email]=[${email}]`;
     const userRes = await fetch(uri, {
       headers: {
@@ -22,28 +23,19 @@ export default class Authentication extends Prestashop {
       if (isValid) {
         // IMPLEMENTARE TOKEN JWT
         return {
-          id: user.id,
+          id: String(user.id),
           email: user.email,
           firstname: user.firstname,
           lastname: user.lastname,
           accessToken: "accesstokenwillbesenthere",
-        };
+        } as User;
       } else {
         // password non valida
-        return {
-          success: false,
-          errors: {
-            password: "Password not valid",
-          },
-        };
+        return null;
       }
     } else {
-      return {
-        success: false,
-        errors: {
-          email: "Email not valid",
-        },
-      };
+      // email non valida
+      return null;
     }
   }
 }

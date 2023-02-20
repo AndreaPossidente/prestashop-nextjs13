@@ -9,8 +9,8 @@ export default function LoginPage() {
 
   const onSubmit = async () => {
     const result = await signIn("credentials", {
-      email: emailRef?.current,
-      password: passwordRef?.current,
+      email: emailRef?.current?.value,
+      password: passwordRef?.current?.value,
       redirect: true,
       callbackUrl: "/",
     });

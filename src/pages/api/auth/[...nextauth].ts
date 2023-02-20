@@ -12,12 +12,15 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const { email, password } = credentials as any;
+        if (credentials?.email && credentials?.password) {
+          const user = await Authentication.login(
+            credentials.email,
+            credentials.password
+          );
 
-        const user = await Authentication.login(email, password);
-
-        if (user) {
-          return user;
+          if (user) {
+            return user;
+          }
         }
         // Return null if user data could not be retrieved
         return null;
