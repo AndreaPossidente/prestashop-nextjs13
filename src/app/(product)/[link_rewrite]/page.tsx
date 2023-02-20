@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Suspense } from "react";
 import { Product, Image as Img } from "@/Prestashop/models";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 interface ProductPageProps {
   params: {
@@ -14,14 +14,29 @@ export default async function ProductPage({ params }: ProductPageProps) {
     link_rewrite: params.link_rewrite,
   }).catch((err) => undefined);
 
+  await product?.defaultCategory();
+
   if (!product) {
     notFound();
   }
 
   return (
     <main>
-      <div className="container">
-        <Suspense fallback={<div>Loading...</div>}>
+      <div className="wrapper">
+        <div className="breadcrumb">
+          <div className="container">
+            <ul>
+              <li>
+                <Link href={`/`}>Home</Link> /{" "}
+                <Link href={`/c/${product.category?.link_rewrite}`}>
+                  {product.category?.name}
+                </Link>{" "}
+                / {product.name}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="container">
           <div>
             <Image
               alt={product.name}
@@ -43,7 +58,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               dangerouslySetInnerHTML={{ __html: product.description || "" }}
             ></div>
           </div>
-        </Suspense>
+        </div>
       </div>
     </main>
   );
