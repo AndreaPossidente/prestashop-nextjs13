@@ -15,7 +15,6 @@ export default async function RootLayout({ children }: Props) {
       */}
       <head />
       <body>
-        {/* @ts-expect-error Server Component */}
         <Header />
         {children}
       </body>

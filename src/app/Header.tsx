@@ -13,21 +13,24 @@ import {
 
 interface Props {}
 
-export default async function Header({}: Props) {
+const logo = (
+  <Image
+    alt="NextShop"
+    src={"https://www.jsdev.it/img/logo-1676473843.jpg"}
+    width={140}
+    height={40}
+  />
+);
+
+export default function Header({}: Props) {
   return (
     <header>
       {/* @ts-expect-error Server Component */}
       <Topbar />
       <div className="header-main">
         <div className="container">
-          <Link href={`/`}>
-            <Image
-              alt="NextShop"
-              src={"https://www.jsdev.it/img/logo-1676473843.jpg"}
-              style={{ objectFit: "contain" }}
-              width={140}
-              height={40}
-            />
+          <Link href={`/`} passHref>
+            {logo}
           </Link>
           <div className="search-container">
             <input
@@ -46,7 +49,7 @@ export default async function Header({}: Props) {
                 />
                 <span>Assistenza</span>
               </Link>
-              <Link href={`/login`} className="header-icon">
+              <Link href={`/login`} as={`/login`} className="header-icon">
                 <IoPersonOutline
                   size="1.5rem"
                   style={{ margin: "0.25rem auto" }}

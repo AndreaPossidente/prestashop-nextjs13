@@ -7,8 +7,7 @@ interface HeadProps {
 }
 
 export default async function Head({ params }: HeadProps) {
-  /** @ts-ignore */
-  const category: Category = Category.findOne({
+  const category: Category = await Category.findOne({
     link_rewrite: params.link_rewrite,
   }).catch((err) => {
     return { meta_title: "404 Page not found", meta_description: "" };

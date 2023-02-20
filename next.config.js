@@ -2,7 +2,6 @@
 const nextConfig = {
   experimental: {
     appDir: true,
-    swcMinify: true,
   },
   images: {
     domains: ["www.jsdev.it"],

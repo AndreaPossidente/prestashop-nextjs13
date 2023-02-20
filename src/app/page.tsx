@@ -35,7 +35,7 @@ export default async function HomePage() {
 
   const product1JSX = new Array();
 
-  if (homepage) {
+  if (homepage?.homepage) {
     for (let section of homepage.homepage) {
       const products: Product[] = await Product.find(
         {},
@@ -46,7 +46,7 @@ export default async function HomePage() {
       }
 
       product1JSX.push(
-        <section className="section">
+        <>
           <h1>{section.title}</h1>
           <div className="products">
             {products.map((product) => (
@@ -106,7 +106,7 @@ export default async function HomePage() {
               </Link>
             ))}
           </div>
-        </section>
+        </>
       );
     }
   }
@@ -115,7 +115,8 @@ export default async function HomePage() {
     <main>
       <div className="container">
         <section className="hero"></section>
-        <Suspense fallback={<div>Loading...</div>}>{product1JSX}</Suspense>
+
+        <section className="section">{product1JSX}</section>
       </div>
     </main>
   );

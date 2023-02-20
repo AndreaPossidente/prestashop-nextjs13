@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Key } from "react";
 
-export default async function MenuLink({
+export default function MenuLink({
   keyPass,
   href,
   value,
@@ -14,7 +14,12 @@ export default async function MenuLink({
 }) {
   return (
     <li key={keyPass}>
-      <Link href={`${href}`}>{value}</Link>
+      <Link
+        style={{ display: "flex", width: "100%", height: "100%" }}
+        href={`${href}`}
+      >
+        <span>{value}</span>
+      </Link>
       {children}
     </li>
   );

@@ -1,5 +1,9 @@
 header {
   .header-topbar {
+    display: none;
+    @media (min-width: 576px) {
+      display: block;
+    }
     background-color: #eeece8;
     padding: 0.5rem;
     ul {
