@@ -12,20 +12,20 @@ import { Product, Image as Img, CMS } from "@/Prestashop/models";
 interface HomeInterface {
   homepage?: [
     {
-      type?: string;
-      title?: string;
-      limit?: number;
-      offset?: number;
+      type?: string | null;
+      title?: string | null;
+      limit?: number | null;
+      offset?: number | null;
     }
   ];
 }
 
-export default async function Home() {
+export default async function HomePage() {
   const shop: CMS = await CMS.findOne({ link_rewrite: "index" }).catch(
     (err) => undefined
   );
 
-  const homepage: HomeInterface = JSON.parse(
+  const homepage: HomeInterface = await JSON.parse(
     shop.content.replace("<p>", "").replace("</p>", "")
   );
 
@@ -35,7 +35,7 @@ export default async function Home() {
 
   const product1JSX = new Array();
 
-  if (homepage.homepage)
+  if (homepage) {
     for (let section of homepage.homepage) {
       const products: Product[] = await Product.find(
         {},
@@ -82,25 +82,25 @@ export default async function Home() {
                     </div>
                   </div>
                   <div className="product-buttons">
-                    <a>
+                    <span>
                       <IoBagAddOutline
                         size="1.5rem"
                         style={{ margin: "0.25rem auto" }}
                       />
                       <span>Add to Cart</span>
-                    </a>
-                    <a>
+                    </span>
+                    <span>
                       <IoHeartOutline
                         size="1.5rem"
                         style={{ margin: "0.25rem auto" }}
                       />
-                    </a>
-                    <a>
+                    </span>
+                    <span>
                       <IoGitCompareOutline
                         size="1.5rem"
                         style={{ margin: "0.25rem auto" }}
                       />
-                    </a>
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -109,6 +109,7 @@ export default async function Home() {
         </section>
       );
     }
+  }
 
   return (
     <main>

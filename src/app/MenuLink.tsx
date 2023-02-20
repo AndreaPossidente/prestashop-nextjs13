@@ -13,11 +13,9 @@ export default async function MenuLink({
   children: React.ReactNode;
 }) {
   return (
-    <Link href={`${href}`}>
-      <li key={keyPass}>
-        {value}
-        {children}
-      </li>
-    </Link>
+    <li key={keyPass}>
+      <Link href={`${href}`}>{value}</Link>
+      {children}
+    </li>
   );
 }
