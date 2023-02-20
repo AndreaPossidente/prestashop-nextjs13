@@ -1,6 +1,6 @@
 # Prestashop Next.js 13 Headless integration through Webservice API
 
-The project is still in development, some models and functionalities are missing and will be added soon
+The project is still in development, functionalities are missing and will be added soon
 
 #### If you'd like to collaborate with the project contact me at <a href="mailto:info@andreapossidente.dev">info@andreapossidente.dev</a>
 
