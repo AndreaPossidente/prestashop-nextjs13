@@ -17,8 +17,6 @@ export default class Authentication extends Prestashop {
     const user: Customer | undefined =
       json.customers?.length > 0 ? json.customers[0] : undefined;
 
-    console.log(json.customers);
-
     if (user) {
       const isValid = await bcrypt.compare(password, user.passwd);
       if (isValid) {
