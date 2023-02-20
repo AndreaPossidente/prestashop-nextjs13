@@ -5,12 +5,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { query } = req;
+  const { body } = req;
 
-  const email: string | undefined =
-    (query?.email as string) !== "" ? (query.email as string) : undefined;
-  const password: string | undefined =
-    (query?.password as string) !== "" ? (query.password as string) : undefined;
+  const email = body.email;
+  const password = body.password;
 
   if (!email && !password) {
     res.status(400).json({
@@ -45,7 +43,7 @@ export default async function handler(
 
   if (email && password) {
     const auth: AuthResponse = await Authentication.login(email, password);
-
+    console.log(auth);
     if (auth.success) {
       res.status(200).json(auth);
     } else {

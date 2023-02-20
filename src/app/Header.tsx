@@ -10,6 +10,7 @@ import {
   IoHelpCircleOutline,
   IoPersonOutline,
 } from "react-icons/io5";
+import LoginIcon from "./LoginIcon";
 
 interface Props {}
 
@@ -49,13 +50,7 @@ export default function Header({}: Props) {
                 />
                 <span>Assistenza</span>
               </Link>
-              <Link href={`/login`} as={`/login`} className="header-icon">
-                <IoPersonOutline
-                  size="1.5rem"
-                  style={{ margin: "0.25rem auto" }}
-                />
-                <span>Accedi</span>
-              </Link>
+              <LoginIcon />
               <Link href={`/`} className="header-icon hide-mobile">
                 <IoHeartOutline
                   size="1.5rem"
