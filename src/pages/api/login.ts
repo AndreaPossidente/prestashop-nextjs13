@@ -1,5 +1,6 @@
 import Authentication from "@/Prestashop/services/Authentication";
 import { NextApiRequest, NextApiResponse } from "next";
+import { User } from "next-auth";
 
 export default async function handler(
   req: NextApiRequest,
@@ -42,9 +43,9 @@ export default async function handler(
   }
 
   if (email && password) {
-    const auth: AuthResponse = await Authentication.login(email, password);
-    console.log(auth);
-    if (auth.success) {
+    const auth: User | null = await Authentication.login(email, password);
+
+    if (auth) {
       res.status(200).json(auth);
     } else {
       res.status(400).json(auth);
