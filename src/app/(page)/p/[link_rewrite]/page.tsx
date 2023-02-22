@@ -1,3 +1,4 @@
+import "./page.scss";
 import { CMS } from "@/Prestashop/models";
 import { notFound } from "next/navigation";
 

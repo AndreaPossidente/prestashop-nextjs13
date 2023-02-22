@@ -17,6 +17,48 @@ body {
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+  transition: color 200ms ease-in-out;
+}
+
+.breadcrumb {
+  a {
+    text-decoration: underline;
+  }
+}
+
+a:hover {
+  color: #0075fc;
+}
+
+.wrapper {
+  padding-top: 0.75rem;
+  padding-bottom: 3rem;
+}
+
+.breadcrumb {
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+  padding: 0 10px;
+
+  .container {
+    ul {
+      list-style-type: none;
+      li {
+        font-size: 0.75rem;
+        line-height: 1.2em;
+        display: inline;
+        &:not(:first-child)::before {
+          content: "/";
+          margin: 0 0.25em;
+        }
+      }
+    }
+  }
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
 }

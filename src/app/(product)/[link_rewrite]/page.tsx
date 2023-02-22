@@ -1,3 +1,5 @@
+import "./product.scss";
+
 import Image from "next/image";
 import { Product, Image as Img } from "@/Prestashop/models";
 import { notFound } from "next/navigation";

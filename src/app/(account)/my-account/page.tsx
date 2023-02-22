@@ -1,7 +1,10 @@
+import SignOutButton from "./SignOutButton";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Customer } from "@/Prestashop/models";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
+
+import "./my-account.scss";
 
 export default async function MyAccount() {
   const session = await getServerSession(authOptions);
@@ -25,8 +28,11 @@ export default async function MyAccount() {
           <div>
             <h1>My Account</h1>
             <p>
-              {user.firstname || ""} {user.lastname || ""}
+              {user.firstname} {user.lastname}
             </p>
+            <div>
+              <SignOutButton />
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import "@/app/scss/main.scss";
+import "./reset.scss";
+import "./globals.scss";
 
 import Header from "./(header)/Header";
 import Providers from "./providers";

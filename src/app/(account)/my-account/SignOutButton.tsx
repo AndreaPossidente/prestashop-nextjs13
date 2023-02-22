@@ -2,7 +2,7 @@
 import { signOut } from "next-auth/react";
 import { IoLogOutOutline } from "react-icons/io5";
 
-export default function SignOutButton({ firstname }: { firstname: string }) {
+export default function SignOutButton() {
   return (
     <a
       onClick={(e) => {
@@ -13,7 +13,7 @@ export default function SignOutButton({ firstname }: { firstname: string }) {
       className="header-icon"
     >
       <IoLogOutOutline size="1.5rem" style={{ margin: "0.25rem auto" }} />
-      <span>Esci {firstname}</span>
+      <span>Esci</span>
     </a>
   );
 }

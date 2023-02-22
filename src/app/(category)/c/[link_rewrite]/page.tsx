@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { Category, Product } from "@/Prestashop/models";
 import Link from "next/link";
 
+import "./category.scss";
+
 interface PageProps {
   params: {
     link_rewrite: string;

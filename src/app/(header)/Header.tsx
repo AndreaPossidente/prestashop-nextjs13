@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import "./header.scss";
+
 import Navigation from "../Navigation";
 import Topbar from "./Topbar";
 import LoginIcon from "./LoginIcon";
@@ -49,7 +51,6 @@ export default function Header({}: Props) {
                 />
                 <span>Assistenza</span>
               </Link>
-              {/* @ts-expect-error Server Component */}
               <LoginIcon />
               <Link href={`/`} className="header-icon hide-mobile">
                 <IoHeartOutline
