@@ -6,6 +6,8 @@ import Link from "next/link";
 
 import "./my-account.scss";
 
+export const dynamic = "force-dynamic";
+
 export default async function MyAccount() {
   const session = await getServerSession(authOptions);
   const user: Customer = session
