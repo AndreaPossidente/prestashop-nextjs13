@@ -41,18 +41,18 @@ export const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
   },
   callbacks: {
-    async session({ session, token }) {
-      const ext = token as extendedJWT;
-      delete ext.user.accessToken;
-      session.user = ext.user;
+    async session({ session, token, user }) {
+      const extToken = token as extendedJWT;
+      delete extToken.user.accessToken;
+      session.user = extToken.user;
       return session;
     },
     async jwt({ token, account, profile, isNewUser, user }) {
-      const ext = token as extendedJWT;
+      const extToken = token as extendedJWT;
       if (user) {
-        ext.user = user;
+        extToken.user = user;
       }
-      return ext;
+      return extToken;
     },
   },
 };

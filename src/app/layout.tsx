@@ -1,6 +1,6 @@
 import "@/app/scss/main.scss";
 
-import Header from "./Header";
+import Header from "./(header)/Header";
 import Providers from "./providers";
 
 interface Props {

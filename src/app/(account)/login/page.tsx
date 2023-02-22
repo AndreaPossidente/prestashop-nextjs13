@@ -2,7 +2,7 @@
 
 import "./login.scss";
 
-import { User, UserResponse } from "next-auth";
+import { UserResponse } from "next-auth";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -21,7 +21,7 @@ export default function LoginPage() {
       redirect: false,
     }).then((res) => {
       if (res?.ok) {
-        router.push("/");
+        router.push("/my-account");
       } else {
         if (res?.error) {
           const resp = JSON.parse(res.error) as UserResponse;
