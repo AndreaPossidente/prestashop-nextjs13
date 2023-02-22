@@ -1,5 +1,10 @@
 import Authentication from "@/Prestashop/services/Authentication";
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, {
+  extendedJWT,
+  NextAuthOptions,
+  User,
+  UserResponse,
+} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
@@ -12,26 +17,43 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        if (credentials?.email && credentials?.password) {
-          const user = await Authentication.login(
-            credentials.email,
-            credentials.password
-          );
+        const userResponse = (await Authentication.login(
+          credentials?.email || "",
+          credentials?.password || ""
+        )) as UserResponse;
 
-          if (user) {
-            return user;
-          }
+        if (userResponse?.success) {
+          return userResponse?.user as User;
         }
-        // Return null if user data could not be retrieved
-        return null;
+
+        throw new Error(JSON.stringify(userResponse));
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
   },
   pages: {
     signIn: "/login",
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
+  callbacks: {
+    async session({ session, token }) {
+      const ext = token as extendedJWT;
+      delete ext.user.accessToken;
+      session.user = ext.user;
+      return session;
+    },
+    async jwt({ token, account, profile, isNewUser, user }) {
+      const ext = token as extendedJWT;
+      if (user) {
+        ext.user = user;
+      }
+      return ext;
+    },
   },
 };
 

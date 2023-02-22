@@ -1,18 +1,33 @@
 "use client";
+
+import "./login.scss";
+
+import { User, UserResponse } from "next-auth";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 
 export default function LoginPage() {
+  const router = useRouter();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [userResponse, setUserResponse] = useState<UserResponse | null>(null);
 
   const onSubmit = async () => {
-    const result = await signIn("credentials", {
+    signIn("credentials", {
       email: emailRef?.current?.value,
       password: passwordRef?.current?.value,
-      redirect: true,
-      callbackUrl: "/",
+      redirect: false,
+    }).then((res) => {
+      if (res?.ok) {
+        router.push("/");
+      } else {
+        if (res?.error) {
+          const resp = JSON.parse(res.error) as UserResponse;
+          setUserResponse(resp);
+        }
+      }
     });
   };
 
@@ -33,11 +48,27 @@ export default function LoginPage() {
             <h1>Login to your Account</h1>
             <div>
               <label>Email *</label>
-              <input ref={emailRef} id="email" type="email" />
+              <input
+                className={userResponse?.errors?.email && "error"}
+                ref={emailRef}
+                id="email"
+                type="email"
+              />
+              {userResponse?.errors?.email && (
+                <span>{userResponse.errors.email}</span>
+              )}
             </div>
             <div>
               <label>Password *</label>
-              <input ref={passwordRef} id="password" type="password" />
+              <input
+                className={userResponse?.errors?.password && "error"}
+                ref={passwordRef}
+                id="password"
+                type="password"
+              />
+              {userResponse?.errors?.password && (
+                <span>{userResponse.errors.password}</span>
+              )}
             </div>
             <div>
               <Link href="/reset-password">Forgot your password?</Link>

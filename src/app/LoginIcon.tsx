@@ -1,6 +1,6 @@
 "use client";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { IoPersonOutline } from "react-icons/io5";
+import { IoLogOutOutline, IoPersonOutline } from "react-icons/io5";
 export default function LoginIcon() {
   const { data: session } = useSession();
 
@@ -14,8 +14,8 @@ export default function LoginIcon() {
         style={{ cursor: "pointer" }}
         className="header-icon"
       >
-        <IoPersonOutline size="1.5rem" style={{ margin: "0.25rem auto" }} />
-        <span>Esci {session.user.firstname}</span>
+        <IoLogOutOutline size="1.5rem" style={{ margin: "0.25rem auto" }} />
+        <span>Esci {session.user?.firstname}</span>
       </a>
     );
   }
