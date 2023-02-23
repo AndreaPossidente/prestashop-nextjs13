@@ -5,6 +5,8 @@ import ProductList from "./ProductList";
 import { CMS } from "@/Prestashop/models";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const shop: CMS = await CMS.findOne({ link_rewrite: "index" }).catch(
     (err) => undefined
@@ -12,6 +14,7 @@ export default async function HomePage() {
 
   type PageInterface = [
     {
+      id?: number | null;
       type?: string | null;
       title?: string | null;
       limit?: number | null;
@@ -23,6 +26,8 @@ export default async function HomePage() {
     shop.content.replace("<p>", "").replace("</p>", "")
   );
 
+  console.log(page);
+
   if (!shop) {
     notFound();
   }
@@ -33,25 +38,23 @@ export default async function HomePage() {
     <main>
       <div className="container">
         <section className="hero"></section>
-        <section className="section">
-          {page?.map((section) => {
-            if (section.type == "products") {
-              return (
-                <>
-                  <h1>{section.title}</h1>
-                  <Suspense
-                    key={sectionKey}
-                    fallback={<ProductPlaceholder items={section.limit || 5} />}
-                  >
-                    {/* @ts-expect-error Server Component */}
-                    <ProductList section={section} />
-                  </Suspense>
-                </>
-              );
-              sectionKey++;
-            }
-          })}
-        </section>
+        {page.map((section) => {
+          if (section.type == "products") {
+            return (
+              <section key={section.id} className="section">
+                <h1>{section.title}</h1>
+                <Suspense
+                  key={sectionKey}
+                  fallback={<ProductPlaceholder items={section.limit || 5} />}
+                >
+                  {/* @ts-expect-error Server Component */}
+                  <ProductList section={section} />
+                </Suspense>
+              </section>
+            );
+            sectionKey++;
+          }
+        })}
       </div>
     </main>
   );
