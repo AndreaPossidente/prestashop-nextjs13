@@ -1,19 +1,11 @@
 import SignOutButton from "./SignOutButton";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { Customer } from "@/Prestashop/models";
-import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 
 import "./my-account.scss";
-
-export const dynamic = "force-dynamic";
+import { Suspense } from "react";
+import UserInfo from "./UserInfo";
 
 export default async function MyAccount() {
-  const session = await getServerSession(authOptions);
-  const user: Customer = session
-    ? await Customer.findOne({ id: session?.user.id })
-    : null;
-
   return (
     <main>
       <div className="wrapper">
@@ -29,11 +21,14 @@ export default async function MyAccount() {
         <div className="container">
           <div>
             <h1>My Account</h1>
-            <p>
-              {user.firstname} {user.lastname}
-            </p>
+            <Suspense fallback={<div>loading...</div>}>
+              {/* @ts-expect-error Server Component */}
+              <UserInfo />
+            </Suspense>
             <div>
-              <SignOutButton />
+              <Suspense fallback={<div>loading...</div>}>
+                <SignOutButton />
+              </Suspense>
             </div>
           </div>
         </div>
