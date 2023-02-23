@@ -6,6 +6,7 @@ import { IoPersonOutline } from "react-icons/io5";
 export default function SignInButton() {
   return (
     <a
+      href="/login"
       onClick={(e) => {
         e.preventDefault;
         signIn();
