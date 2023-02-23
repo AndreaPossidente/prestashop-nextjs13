@@ -6,6 +6,7 @@ import {
   OrderState,
 } from "@/Prestashop/models";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface OrderPageProps {
   params: {
@@ -20,7 +21,11 @@ export default async function OrderPage({ params }: OrderPageProps) {
 
   const order: Order = await Order.findOne({
     reference: params.reference,
-  });
+  }).catch((err) => null);
+
+  if (order === null) {
+    notFound();
+  }
 
   console.log(order);
 
