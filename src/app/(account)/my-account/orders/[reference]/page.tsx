@@ -231,7 +231,6 @@ export default async function OrderPage({ params }: OrderPageProps) {
                   </table>
                 </div>
               </div>
-              );
             </div>
           </div>
         </div>
