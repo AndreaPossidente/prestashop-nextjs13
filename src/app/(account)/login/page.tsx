@@ -3,13 +3,17 @@
 import "./login.scss";
 
 import { UserResponse } from "next-auth";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 export default function LoginPage() {
+  const { data: session } = useSession();
   const router = useRouter();
+  if (session?.user) {
+    router.replace("/my-account");
+  }
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [userResponse, setUserResponse] = useState<UserResponse | null>(null);
