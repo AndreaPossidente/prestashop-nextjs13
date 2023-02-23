@@ -14,7 +14,12 @@ interface OrderPageProps {
   };
 }
 
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+
 export default async function OrderPage({ params }: OrderPageProps) {
+  const session = await getServerSession(authOptions);
+
   const orderState: OrderState[] = await OrderState.find();
   const currencies: Currency[] = await Currency.find();
   const countries: Country[] = await Country.find();
@@ -22,6 +27,10 @@ export default async function OrderPage({ params }: OrderPageProps) {
   const order: Order = await Order.findOne({
     reference: params.reference,
   }).catch((err) => null);
+
+  if (!session || session?.user.id !== String(order?.id_customer)) {
+    notFound();
+  }
 
   if (order === null) {
     notFound();
