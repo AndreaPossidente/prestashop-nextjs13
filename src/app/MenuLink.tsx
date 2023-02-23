@@ -16,7 +16,7 @@ export default function MenuLink({
     <li key={keyPass}>
       <Link
         style={{ display: "flex", width: "100%", height: "100%" }}
-        href={`${href}`}
+        href={`/c/${href}`}
       >
         <span>{value}</span>
       </Link>

@@ -32,8 +32,6 @@ export default async function HomePage() {
     notFound();
   }
 
-  let sectionKey = 0;
-
   return (
     <main>
       <div className="container">
@@ -44,7 +42,6 @@ export default async function HomePage() {
               <section key={section.id} className="section">
                 <h1>{section.title}</h1>
                 <Suspense
-                  key={sectionKey}
                   fallback={<ProductPlaceholder items={section.limit || 5} />}
                 >
                   {/* @ts-expect-error Server Component */}
@@ -52,7 +49,6 @@ export default async function HomePage() {
                 </Suspense>
               </section>
             );
-            sectionKey++;
           }
         })}
       </div>
@@ -75,6 +71,7 @@ function ProductPlaceholder({ items }: { items: number }) {
           style={{
             minHeight: "16px",
             width: "55%",
+            marginTop: "15px",
             marginRight: "auto",
             marginLeft: "auto",
           }}
@@ -97,7 +94,10 @@ function ProductPlaceholder({ items }: { items: number }) {
             marginLeft: "auto",
           }}
         ></div>
-        <div className="product-prices">
+        <div
+          className="product-prices"
+          style={{ marginTop: "10px", marginBottom: "5px" }}
+        >
           <div
             className="product-price animated-box"
             style={{ minHeight: "16px", minWidth: "20%" }}

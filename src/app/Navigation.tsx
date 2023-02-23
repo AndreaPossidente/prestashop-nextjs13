@@ -16,7 +16,7 @@ export default async function Navigation(): Promise<JSX.Element> {
                   <MenuLink
                     key={category.id}
                     keyPass={category.id}
-                    href={`/c/${category.link_rewrite}`}
+                    href={`${category.link_rewrite}`}
                     value={category.name}
                   >
                     {categories.filter(
@@ -33,7 +33,7 @@ export default async function Navigation(): Promise<JSX.Element> {
                               <MenuLink
                                 key={subCategory.id}
                                 keyPass={subCategory.id}
-                                href={`/c/${subCategory.link_rewrite}`}
+                                href={`${subCategory.link_rewrite}`}
                                 value={subCategory.name}
                               ></MenuLink>
                             );
