@@ -34,7 +34,7 @@ export default async function HomePage() {
       <div className="container">
         <section className="hero"></section>
         <section className="section">
-          {page.map((section) => {
+          {page?.map((section) => {
             if (section.type == "products") {
               return (
                 <>
