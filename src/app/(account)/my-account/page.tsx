@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./my-account.scss";
 import { Suspense } from "react";
 import UserInfo from "./UserInfo";
+export const dynamic = "force-dynamic";
 
 export default async function MyAccount() {
   return (
@@ -21,12 +22,12 @@ export default async function MyAccount() {
         <div className="container">
           <div>
             <h1>My Account</h1>
-            <Suspense fallback={<div>loading...</div>}>
+            <Suspense fallback={<div className="animated-box"></div>}>
               {/* @ts-expect-error Server Component */}
               <UserInfo />
             </Suspense>
             <div>
-              <Suspense fallback={<div>loading...</div>}>
+              <Suspense fallback={<div className="animated-box"></div>}>
                 <SignOutButton />
               </Suspense>
             </div>

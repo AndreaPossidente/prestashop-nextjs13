@@ -9,11 +9,12 @@ export default function SignOutButton() {
         e.preventDefault;
         signOut();
       }}
-      style={{ cursor: "pointer" }}
-      className="header-icon"
+      style={{
+        cursor: "pointer",
+      }}
     >
       <IoLogOutOutline size="1.5rem" style={{ margin: "0.25rem auto" }} />
-      <span>Esci</span>
+      <div>Esci</div>
     </a>
   );
 }
