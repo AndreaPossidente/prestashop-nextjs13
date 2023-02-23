@@ -12,6 +12,10 @@ export default async function HomePage() {
     (err) => undefined
   );
 
+  if (!shop) {
+    notFound();
+  }
+
   type PageInterface = [
     {
       id?: number | null;
@@ -25,12 +29,6 @@ export default async function HomePage() {
   const page: PageInterface = await JSON.parse(
     shop.content.replace("<p>", "").replace("</p>", "")
   );
-
-  console.log(page);
-
-  if (!shop) {
-    notFound();
-  }
 
   return (
     <main>

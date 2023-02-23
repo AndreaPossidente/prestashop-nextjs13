@@ -5,8 +5,7 @@ import {
   IoGitCompareOutline,
   IoHeartOutline,
 } from "react-icons/io5";
-import { CMS, Image as Img, Product } from "@/Prestashop/models";
-import { notFound } from "next/navigation";
+import { Image as Img, Product } from "@/Prestashop/models";
 
 export default async function ProductList({
   section,
