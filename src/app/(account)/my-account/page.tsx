@@ -22,10 +22,12 @@ export default async function MyAccount() {
         <div className="container">
           <div>
             <h1>My Account</h1>
+            <hr />
             <Suspense fallback={<div className="animated-box"></div>}>
               {/* @ts-expect-error Server Component */}
               <UserInfo />
             </Suspense>
+            <hr />
             <div>
               <Suspense fallback={<div className="animated-box"></div>}>
                 <SignOutButton />

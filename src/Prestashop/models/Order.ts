@@ -60,6 +60,9 @@ export default class Order extends Model {
   reference: string;
   associations: Association;
 
+  delivery_address: null | Address;
+  invoice_address: null | Address;
+
   constructor(order: OrderSchema) {
     super();
     this.id = order.id;
@@ -109,6 +112,9 @@ export default class Order extends Model {
     this.round_type = order.round_type;
     this.conversion_rate = Number(order.conversion_rate);
     this.reference = order.reference;
+
+    this.delivery_address = null;
+    this.invoice_address = null;
 
     const orderRows: OrderRow[] = new Array();
 

@@ -1,8 +1,10 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Customer } from "@/Prestashop/models";
 import { getServerSession } from "next-auth/next";
+import { Suspense } from "react";
 
 import "./my-account.scss";
+import Orders from "./Orders";
 
 export const dynamic = "force-dynamic";
 
@@ -13,8 +15,18 @@ export default async function UserInfo() {
     : null;
 
   return (
-    <p>
-      {user.firstname} {user.lastname}
-    </p>
+    <div>
+      <div>
+        {user.firstname} {user.lastname}
+      </div>
+
+      <h2>Orders</h2>
+      <Suspense fallback={<div>loading...</div>}>
+        {session?.user && (
+          // @ts-expect-error Server Component
+          <Orders userId={session.user.id} />
+        )}
+      </Suspense>
+    </div>
   );
 }
