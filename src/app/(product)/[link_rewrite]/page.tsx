@@ -1,7 +1,7 @@
 import "./product.scss";
 
 import Image from "next/image";
-import { Product, Image as Img } from "@/Prestashop/models";
+import { Product, Image as Img, Configuration } from "@/Prestashop/models";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -17,13 +17,16 @@ import type { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
+  const shop: Configuration = await Configuration.findOne({
+    name: "PS_SHOP_NAME",
+  });
   const product: Product = await Product.findOne({
     link_rewrite: params.link_rewrite,
   }).catch((err) => {
     return { meta_title: "404 Page not found", meta_description: "" };
   });
   return {
-    title: product.meta_title || product.name,
+    title: product.meta_title || product.name + " | " + shop.value,
     description: product.meta_description,
     keywords: product.meta_keywords,
   };

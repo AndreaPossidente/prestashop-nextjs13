@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Category, Product } from "@/Prestashop/models";
+import { Category, Configuration, Product } from "@/Prestashop/models";
 import Link from "next/link";
 
 import "./category.scss";
@@ -16,19 +16,25 @@ import type { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
+  const shop: Configuration = await Configuration.findOne({
+    name: "PS_SHOP_NAME",
+  });
   const category: Category = await Category.findOne({
     link_rewrite: params.link_rewrite,
   }).catch((err) => {
     return { meta_title: "404 Page not found", meta_description: "" };
   });
   return {
-    title: category.meta_title || category.name,
+    title: category.meta_title || category.name + " | " + shop.value,
     description: category.meta_description,
     keywords: category.meta_keywords,
   };
 }
 
 export default async function CategoryPage({ params }: PageProps) {
+  const shop: Configuration = await Configuration.findOne({
+    name: "PS_SHOP_NAME",
+  });
   const category: Category = await Category.findOne({
     link_rewrite: params.link_rewrite,
   }).catch((err) => undefined);
