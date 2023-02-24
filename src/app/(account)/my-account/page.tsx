@@ -6,6 +6,20 @@ import { Suspense } from "react";
 import UserInfo from "./UserInfo";
 export const dynamic = "force-dynamic";
 
+// META DATA
+import type { Metadata } from "next";
+import { Configuration } from "@/Prestashop/models";
+/** @type {import("next").Metadata} */
+export async function generateMetadata(): Promise<Metadata> {
+  const shop: Configuration = await Configuration.findOne({
+    name: "PS_SHOP_NAME",
+  });
+  return {
+    title: "My Account | " + shop.value,
+    description: "My account page",
+  };
+}
+
 export default async function MyAccount() {
   return (
     <main>

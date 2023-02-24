@@ -10,6 +10,24 @@ interface PageProps {
   };
 }
 
+// META DATA
+import type { Metadata } from "next";
+/** @type {import("next").Metadata} */
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const category: Category = await Category.findOne({
+    link_rewrite: params.link_rewrite,
+  }).catch((err) => {
+    return { meta_title: "404 Page not found", meta_description: "" };
+  });
+  return {
+    title: category.meta_title || category.name,
+    description: category.meta_description,
+    keywords: category.meta_keywords,
+  };
+}
+
 export default async function CategoryPage({ params }: PageProps) {
   const category: Category = await Category.findOne({
     link_rewrite: params.link_rewrite,

@@ -11,6 +11,24 @@ interface ProductPageProps {
   };
 }
 
+// META DATA
+import type { Metadata } from "next";
+/** @type {import("next").Metadata} */
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const product: Product = await Product.findOne({
+    link_rewrite: params.link_rewrite,
+  }).catch((err) => {
+    return { meta_title: "404 Page not found", meta_description: "" };
+  });
+  return {
+    title: product.meta_title || product.name,
+    description: product.meta_description,
+    keywords: product.meta_keywords,
+  };
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const product: Product | undefined = await Product.findOne({
     link_rewrite: params.link_rewrite,

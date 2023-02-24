@@ -16,6 +16,25 @@ interface OrderPageProps {
   };
 }
 
+// META DATA
+import type { Metadata } from "next";
+import { Configuration } from "@/Prestashop/models";
+/** @type {import("next").Metadata} */
+export async function generateMetadata({
+  params,
+}: OrderPageProps): Promise<Metadata> {
+  const shop: Configuration = await Configuration.findOne({
+    name: "PS_SHOP_NAME",
+  });
+  const order: Order = await Order.findOne({
+    reference: params.reference,
+  }).catch((err) => null);
+  return {
+    title: "Order " + order.reference + " | " + shop.value,
+    description: "Order page",
+  };
+}
+
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
