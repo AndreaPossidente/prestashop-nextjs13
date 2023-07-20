@@ -22,13 +22,12 @@ export default function LoginForm() {
       password: passwordRef?.current?.value,
       redirect: false,
     }).then((res) => {
+      if (res?.error) {
+        const resp = JSON.parse(res.error) as UserResponse;
+        setUserResponse(resp);
+      }
       if (res?.ok) {
         router.push("/my-account");
-      } else {
-        if (res?.error) {
-          const resp = JSON.parse(res.error) as UserResponse;
-          setUserResponse(resp);
-        }
       }
     });
   };

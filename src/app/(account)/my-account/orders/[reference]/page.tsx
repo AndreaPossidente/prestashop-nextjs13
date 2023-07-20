@@ -36,7 +36,7 @@ export async function generateMetadata({
 }
 
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function OrderPage({ params }: OrderPageProps) {
   const session = await getServerSession(authOptions);
